@@ -3,17 +3,24 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "build": "tsc --build ./tsconfig.build.json",
+    "build": "tsc-multi --clean && tsc-multi",
     "dev": "nitro dev",
     "prepare": "nitro prepare"
   },
   "dependencies": {
-    "nitropack": "^2.9.6",
-    "typescript": "^5.4.5"
+    "consola": "^3.2.3",
+    "defu": "^6.1.4",
+    "ioredis": "^5.4.1",
+    "nanoid": "^5.0.7",
+    "node-ciphers": "^0.8.1",
+    "on-change": "^5.0.1",
+    "unstorage": "^1.10.2"
   },
   "devDependencies": {
-    "@kikiutils/prettierrc": "^1.3.1",
-    "@kikiutils/tsconfigs": "^2.2.0"
+    "@kikiutils/prettierrc": "^1.3.2",
+    "@kikiutils/tsconfigs": "^2.2.0",
+    "nitropack": "^2.9.7",
+    "tsc-multi": "^1.1.0"
   },
   "prettier": "@kikiutils/prettierrc"
 }

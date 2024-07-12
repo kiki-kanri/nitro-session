@@ -1,0 +1,4 @@
+{
+  "projects": ["./tsconfig.build.json"],
+  "targets": [{ "extname": ".mjs" }]
+}
