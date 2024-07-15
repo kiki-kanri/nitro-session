@@ -3,9 +3,13 @@ import type { AESCipherEncodingOptions } from 'node-ciphers';
 import type { FSStorageOptions } from 'unstorage/drivers/fs';
 import type { FSStorageOptions as FSLiteStorageOptions } from 'unstorage/drivers/fs-lite';
 import type { LRUDriverOptions } from 'unstorage/drivers/lru-cache';
+import type { MongoDbOptions } from 'unstorage/drivers/mongodb';
 import type { RedisOptions } from 'unstorage/drivers/redis';
 
-export type DataStorageOptions = DataStorageOptions.CookieOrHeader | ((DataStorageOptions.Fs | DataStorageOptions.FsLite | DataStorageOptions.LruCache | DataStorageOptions.Memory | DataStorageOptions.Redis) & UseUnstorageDataStorageOptions);
+export type DataStorageOptions =
+	| DataStorageOptions.CookieOrHeader
+	| ((DataStorageOptions.Fs | DataStorageOptions.FsLite | DataStorageOptions.LruCache | DataStorageOptions.Memory | DataStorageOptions.MongoDB | DataStorageOptions.Redis) & UseUnstorageDataStorageOptions);
+
 export type TokenStorageOptions = TokenStorageOptions.Cookie | TokenStorageOptions.Header;
 
 export interface PluginOptions {
@@ -51,6 +55,11 @@ export namespace DataStorageOptions {
 
 	export interface Memory {
 		driver: 'memory';
+	}
+
+	export interface MongoDB {
+		driver: 'mongodb';
+		options: MongoDbOptions;
 	}
 
 	export interface Redis {
