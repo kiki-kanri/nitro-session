@@ -1,12 +1,25 @@
 {
   "name": "@kikiutils/nitro-session",
   "version": "0.1.0",
+  "description": "Easy-to-use nitro server-side session.",
+  "license": "MIT",
+  "author": "kiki-kanri",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiki-kanri/nitro-session.git"
+  },
   "type": "module",
+  "main": "./dist/index.mjs",
+  "files": [
+    "./dist"
+  ],
   "scripts": {
     "build": "tsc-multi --clean && tsc-multi",
+    "build:playground": "nitropack build",
     "dev": "nitro dev",
     "prepare": "nitro prepare"
   },
+  "types": "./dist/types/index.d.ts",
   "dependencies": {
     "consola": "^3.2.3",
     "lodash-es": "^4.17.21",
@@ -22,5 +35,12 @@
     "nitropack": "^2.9.7",
     "tsc-multi": "^1.1.0"
   },
+  "keywords": [
+    "nitro",
+    "nitro-session",
+    "nitrojs",
+    "nitrojs-session",
+    "session"
+  ],
   "prettier": "@kikiutils/prettierrc"
 }
