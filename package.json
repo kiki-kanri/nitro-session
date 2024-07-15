@@ -16,6 +16,7 @@
   "scripts": {
     "build": "tsc-multi --clean && tsc-multi",
     "build:playground": "nitropack build",
+    "bumplog": "changelogen --bump",
     "dev": "nitro dev",
     "prepare": "nitro prepare"
   },
@@ -32,6 +33,7 @@
     "@kikiutils/prettierrc": "^1.3.2",
     "@kikiutils/tsconfigs": "^2.2.0",
     "@types/lodash-es": "^4.17.12",
+    "changelogen": "^0.5.5",
     "nitropack": "^2.9.7",
     "tsc-multi": "^1.1.0"
   },
