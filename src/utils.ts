@@ -4,9 +4,9 @@ import onChange from 'on-change';
 import { changedSymbol } from './constants';
 import type { PartialH3EventContextSession } from './types/session';
 
-export const setupH3EventContextSession = (event: H3Event, session: PartialH3EventContextSession, onChangeCallback?: (event: H3Event) => void) => {
+export const setupH3EventContextSession = (event: H3Event, sessionData: PartialH3EventContextSession, onChangeCallback?: (event: H3Event) => void) => {
 	event.context.session = onChange(
-		session,
+		sessionData,
 		() => {
 			event.context.session[changedSymbol] = true;
 			onChangeCallback?.(event);
