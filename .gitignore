@@ -91,12 +91,21 @@ web_modules/
 .next
 out
 
+# Misc
+.DS_Store
+.fleet
+.idea
+
 # Nitro build / generate output
 .nitro
 .output
 
-# Nuxt.js build / generate output
+# Nuxt dev / build / generate output
+.cache
+.data
+.nitro
 .nuxt
+.output
 dist
 
 # Gatsby files
