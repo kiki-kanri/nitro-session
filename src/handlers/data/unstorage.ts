@@ -6,6 +6,7 @@ import type { Storage } from 'unstorage';
 import { unstorageKeySymbol } from '../../constants';
 import type { DataStorageOptions } from '../../types/options';
 import type { PartialH3EventContextSession } from '../../types/session';
+import { importModule } from '../../utils';
 
 export class UnstorageDataHandler {
 	#keyLength: number;
@@ -20,10 +21,10 @@ export class UnstorageDataHandler {
 		const keyLength = options?.key?.length || 24;
 		if (keyLength < 24) throw new Error('The unstorage key length must be 24 or more');
 		let storage;
-		if (!options?.driver || options?.driver === 'memory') storage = createStorage({ driver: (await import('unstorage/drivers/memory')).default() });
+		if (!options?.driver || options?.driver === 'memory') storage = createStorage({ driver: (await importModule('unstorage/drivers/memory'))() });
 		else {
 			try {
-				const driver = (await import(`unstorage/drivers/${options.driver}`)).default;
+				const driver = await importModule(`unstorage/drivers/${options.driver}`);
 				storage = prefixStorage(createStorage({ driver: driver(options.options) }), options.key?.prefix || 'session');
 			} catch (error) {
 				consola.error(error);
