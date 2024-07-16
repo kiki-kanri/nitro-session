@@ -1,13 +1,11 @@
 import consola from 'consola';
 import { cloneDeep, merge } from 'lodash-es';
-import { useRuntimeConfig } from 'nitropack/runtime';
 import type { NitroApp } from 'nitropack';
 
 import { changedSymbol, clearedSymbol, defaultOptions } from './constants';
 import { DataHandler } from './handlers/data';
 import CookieTokenHandler from './handlers/token/cookie';
 import HeaderTokenHandler from './handlers/token/header';
-
 import type { PluginOptions } from './types/options';
 import type { PartialH3EventContextSession } from './types/session';
 import { setupH3EventContextSession } from './utils';
@@ -46,9 +44,8 @@ export const registerHooks = async (nitroApp: NitroApp, options: Required<Plugin
 	});
 };
 
-export default async (nitroApp: NitroApp) => {
-	const runtimeConfig = useRuntimeConfig();
-	const pluginOptions = merge(defaultOptions, cloneDeep(runtimeConfig.nitroSession || {}));
+export default async (nitroApp: NitroApp, options?: PluginOptions) => {
+	const pluginOptions = merge(defaultOptions, cloneDeep(options || {}));
 	if (!pluginOptions.enabled) return consola.info('Nitro session disabled.');
 	consola.info('Initializing Nitro session...');
 	consola.info(`Nitro session configured data with '${pluginOptions.storage?.data?.driver}' driver.`);

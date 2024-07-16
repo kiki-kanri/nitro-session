@@ -2,7 +2,6 @@
 export default defineNitroConfig({
 	alias: { '@': '~/' },
 	noPublicDir: true,
-	plugins: ['../src'],
 	serveStatic: false,
 	srcDir: './playground',
 	sourceMap: false,
