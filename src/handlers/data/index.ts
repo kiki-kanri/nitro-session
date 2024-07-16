@@ -13,11 +13,10 @@ export class DataHandler {
 	}
 
 	static async createInstance(options: PluginOptions) {
-		options.maxAge = options.maxAge || 86400;
 		let handler;
 		if (options.storage?.data?.driver === 'cookie/header') handler = new CookieOrHeaderDataHandler(options.storage.data.options);
 		else handler = await UnstorageDataHandler.createInstance(options.storage?.data || { driver: 'memory' });
-		return new this(handler, options.maxAge);
+		return new this(handler, options.maxAge ?? 86400);
 	}
 
 	async delete(token: string) {
