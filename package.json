@@ -17,8 +17,7 @@
     "build": "tsc-multi --clean && tsc-multi",
     "build:playground": "nitropack build",
     "bumplog": "changelogen --bump",
-    "dev": "nitro dev",
-    "prepack": "npm run build"
+    "dev": "nitro dev"
   },
   "types": "./dist/types/index.d.ts",
   "dependencies": {
