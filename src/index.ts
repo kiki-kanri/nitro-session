@@ -10,33 +10,39 @@ import type { PluginOptions } from './types/options';
 import type { PartialH3EventContextSession } from './types/session';
 import { setupH3EventContextSession } from './utils';
 
-export const registerHooks = async (nitroApp: NitroApp, options: Required<PluginOptions>) => {
-	const dataHandler = await DataHandler.createInstance(options);
-	let tokenHandler;
-	if (options.storage?.token?.driver === 'cookie') tokenHandler = new CookieTokenHandler(options.storage.token.options, options.maxAge);
-	else if (options.storage?.token?.driver === 'header') tokenHandler = new HeaderTokenHandler(options.storage?.token?.options);
-	else throw new Error('Invalid token storage driver');
+export const initialization = async (framework: 'Nitro' | 'Nuxt', options?: PluginOptions) => {
+	consola.info(`Initializing ${framework} session...`);
+	const pluginOptions = merge(defaultOptions, cloneDeep(options || {}));
+	if (!pluginOptions.enabled) return consola.info(`${framework} session disabled.`);
+	consola.info(`${framework} session configured data with '${pluginOptions.storage.data.driver}' driver.`);
+	consola.info(`${framework} session configured token with '${pluginOptions.storage.token.driver}' driver.`);
+	const handlers = await createHandlers(pluginOptions);
+	return { handlers, pluginOptions };
+};
+
+export const registerHooks = async (nitroApp: NitroApp, options: Required<PluginOptions>, handlers?: { dataHandler: DataHandler; tokenHandler: CookieTokenHandler | HeaderTokenHandler }) => {
+	if (!handlers) handlers = await createHandlers(options);
 	nitroApp.hooks.hook('beforeResponse', async (event) => {
 		if (!event.context.session[changedSymbol] || !event.path.startsWith('/api')) return;
 		if (event.context.session[clearedSymbol]) {
-			const token = tokenHandler.get(event);
-			if (token) await dataHandler.delete(token);
-			tokenHandler.delete(event);
+			const token = handlers.tokenHandler.get(event);
+			if (token) await handlers.dataHandler.delete(token);
+			handlers.tokenHandler.delete(event);
 		} else {
-			const token = await dataHandler.setAndGetToken(event.context.session);
-			if (token) tokenHandler.set(event, token);
+			const token = await handlers.dataHandler.setAndGetToken(event.context.session);
+			if (token) handlers.tokenHandler.set(event, token);
 		}
 	});
 
 	nitroApp.hooks.hook('request', async (event) => {
 		if (!event.path.startsWith('/api')) return;
-		const token = tokenHandler.get(event);
+		const token = handlers.tokenHandler.get(event);
 		let sessionData: PartialH3EventContextSession | undefined;
 		if (token) {
-			sessionData = await dataHandler.get(token);
+			sessionData = await handlers.dataHandler.get(token);
 			if (!sessionData) {
-				await dataHandler.delete(token);
-				tokenHandler.delete(event);
+				await handlers.dataHandler.delete(token);
+				handlers.tokenHandler.delete(event);
 			}
 		}
 
@@ -44,12 +50,18 @@ export const registerHooks = async (nitroApp: NitroApp, options: Required<Plugin
 	});
 };
 
+async function createHandlers(options: Required<PluginOptions>) {
+	const dataHandler = await DataHandler.createInstance(options);
+	let tokenHandler;
+	if (options.storage?.token?.driver === 'cookie') tokenHandler = new CookieTokenHandler(options.storage.token.options, options.maxAge);
+	else if (options.storage?.token?.driver === 'header') tokenHandler = new HeaderTokenHandler(options.storage?.token?.options);
+	else throw new Error('Invalid token storage driver');
+	return { dataHandler, tokenHandler };
+}
+
 export default async (nitroApp: NitroApp, options?: PluginOptions) => {
-	const pluginOptions = merge(defaultOptions, cloneDeep(options || {}));
-	if (!pluginOptions.enabled) return consola.info('Nitro session disabled.');
-	consola.info('Initializing Nitro session...');
-	consola.info(`Nitro session configured data with '${pluginOptions.storage?.data?.driver}' driver.`);
-	consola.info(`Nitro session configured token with '${pluginOptions.storage?.token?.driver}' driver.`);
-	await registerHooks(nitroApp, pluginOptions);
+	const initializationResult = await initialization('Nitro', options);
+	if (!initializationResult) return;
+	await registerHooks(nitroApp, initializationResult.pluginOptions, initializationResult.handlers);
 	consola.success('Nitro session initialization successful.');
 };

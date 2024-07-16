@@ -1,14 +1,12 @@
-import type { PluginOptions } from './types/options';
-
 export const changedSymbol = Symbol();
 export const clearedSymbol = Symbol();
-export const defaultOptions: Readonly<Required<PluginOptions>> = {
+export const defaultOptions = {
 	enabled: true,
 	maxAge: 86400,
 	storage: {
 		data: { driver: 'memory' },
 		token: { driver: 'cookie' }
 	}
-};
+} as const;
 
 export const unstorageKeySymbol = Symbol();
