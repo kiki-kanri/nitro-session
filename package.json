@@ -14,7 +14,7 @@
     "./dist"
   ],
   "scripts": {
-    "build": "tsc-multi --clean && tsc-multi",
+    "build": "del-cli ./dist && tsc-multi",
     "build:playground": "nitropack build",
     "bumplog": "changelogen --bump",
     "dev": "nitro dev"
@@ -33,6 +33,7 @@
     "@kikiutils/tsconfigs": "^2.2.0",
     "@types/lodash-es": "^4.17.12",
     "changelogen": "^0.5.5",
+    "del-cli": "^5.1.0",
     "nitropack": "^2.9.7",
     "tsc-multi": "^1.1.0"
   },
