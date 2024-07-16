@@ -7,7 +7,7 @@ import type { PartialH3EventContextSession } from '../../types/session';
 export class CookieOrHeaderDataHandler {
 	#cipher: AESCipher.CBC | AESCipher.CFB | AESCipher.CFB1 | AESCipher.CFB8 | AESCipher.CTR | AESCipher.OFB;
 
-	constructor(options: DataStorageOptions.CookieOrHeader['options']) {
+	constructor(options?: DataStorageOptions.CookieOrHeader['options']) {
 		const aesModeToCipherClassMap = {
 			cbc: AESCipher.CBC,
 			cfb: AESCipher.CFB,
@@ -17,8 +17,8 @@ export class CookieOrHeaderDataHandler {
 			ofb: AESCipher.OFB
 		} as const;
 
-		if (options.encryptionMode && !aesModeToCipherClassMap[options.encryptionMode]) throw new Error(`Invalid data encryption mode: ${options.encryptionMode}`);
-		if (!options.key) throw new Error(`Invalid cookie/header data encryption key: ${options.key}`);
+		if (options?.encryptionMode && !aesModeToCipherClassMap[options.encryptionMode]) throw new Error(`Invalid cookie/header data encryption mode: ${options.encryptionMode}`);
+		if (!options?.key) throw new Error('No cookie/header data encryption key provided');
 		// prettier-ignore
 		if (![16, 24, 32].includes(Buffer.from(options.key, options.encodingOptions?.key).byteLength)) throw new Error('Invalid cookie/header data encryption key length');
 		this.#cipher = new aesModeToCipherClassMap[options.encryptionMode || 'ctr'](

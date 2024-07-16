@@ -16,11 +16,11 @@ export class UnstorageDataHandler {
 		this.#storage = storage;
 	}
 
-	static async createInstance(options: Exclude<DataStorageOptions, DataStorageOptions.CookieOrHeader>) {
-		const keyLength = options.key?.length || 24;
+	static async createInstance(options?: Exclude<DataStorageOptions, DataStorageOptions.CookieOrHeader>) {
+		const keyLength = options?.key?.length || 24;
 		if (keyLength < 24) throw new Error('The unstorage key length must be 24 or more');
 		let storage;
-		if (options.driver === 'memory') storage = createStorage({ driver: (await import('unstorage/drivers/memory')).default() });
+		if (!options?.driver || options?.driver === 'memory') storage = createStorage({ driver: (await import('unstorage/drivers/memory')).default() });
 		else {
 			try {
 				const driver = (await import(`unstorage/drivers/${options.driver}`)).default;
