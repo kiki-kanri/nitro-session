@@ -9,17 +9,12 @@
     "url": "git+https://github.com/kiki-kanri/nitro-session.git"
   },
   "type": "module",
-  "main": "./dist/index.mjs",
-  "files": [
-    "./dist"
-  ],
   "scripts": {
     "build": "del-cli ./dist && tsc-multi",
     "build:playground": "nitropack build",
     "bumplog": "changelogen --bump",
     "dev": "nitro dev"
   },
-  "types": "./dist/types/index.d.ts",
   "dependencies": {
     "consola": "^3.2.3",
     "lodash-es": "^4.17.21",
@@ -44,5 +39,18 @@
     "nitrojs-session",
     "session"
   ],
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "types": "./index.d.ts"
+    },
+    "./runtime/*": {
+      "import": "./runtime/*.mjs",
+      "types": "./runtime/*.d.ts"
+    },
+    "./types/*": {
+      "types": "./types/*.d.ts"
+    }
+  },
   "prettier": "@kikiutils/prettierrc"
 }
