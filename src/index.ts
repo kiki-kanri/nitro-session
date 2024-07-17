@@ -2,7 +2,7 @@ import consola from 'consola';
 import { cloneDeep, merge } from 'lodash-es';
 import type { NitroApp } from 'nitropack';
 
-import { changedSymbol, clearedSymbol, defaultOptions } from './constants';
+import { cachedHandlers, changedSymbol, clearedSymbol, defaultOptions } from './constants';
 import { DataHandler } from './handlers/data';
 import CookieTokenHandler from './handlers/token/cookie';
 import HeaderTokenHandler from './handlers/token/header';
@@ -17,6 +17,7 @@ export const initialization = async (framework: 'Nitro' | 'Nuxt', options?: Plug
 	consola.info(`${framework} session configured data with '${pluginOptions.storage.data.driver}' driver.`);
 	consola.info(`${framework} session configured token with '${pluginOptions.storage.token.driver}' driver.`);
 	const handlers = await createHandlers(pluginOptions);
+	cachedHandlers.data = handlers.dataHandler;
 	return { handlers, pluginOptions };
 };
 

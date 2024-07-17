@@ -1,3 +1,6 @@
+import type { DataHandler } from './handlers/data';
+
+export const cachedHandlers: { data?: DataHandler } = {};
 export const changedSymbol = Symbol();
 export const clearedSymbol = Symbol();
 export const defaultOptions = {

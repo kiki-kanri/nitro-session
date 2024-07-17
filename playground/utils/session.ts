@@ -1,1 +1,1 @@
-export { clearH3EventContextSession, popH3EventContextSession } from '../../src/runtime/utils';
+export { clearH3EventContextSession, deleteH3EventContextSessionStorageData, getH3EventContextSessionToken, popH3EventContextSession } from '../../src/runtime/utils';
