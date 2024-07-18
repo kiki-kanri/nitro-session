@@ -21,10 +21,10 @@ export const initialization = async (framework: 'Nitro' | 'Nuxt', options?: Plug
 	return { handlers, pluginOptions };
 };
 
-export const registerHooks = async (nitroApp: NitroApp, options: Required<PluginOptions>, handlers?: { dataHandler: DataHandler; tokenHandler: CookieTokenHandler | HeaderTokenHandler }) => {
+export const registerHooks = async (nitroApp: NitroApp, options: Required<PluginOptions>, onlyApi?: boolean, handlers?: { dataHandler: DataHandler; tokenHandler: CookieTokenHandler | HeaderTokenHandler }) => {
 	if (!handlers) handlers = await createHandlers(options);
 	nitroApp.hooks.hook('beforeResponse', async (event) => {
-		if (!event.context.session[changedSymbol] || !event.path.startsWith('/api')) return;
+		if (!event.context.session[changedSymbol] || (onlyApi && !event.path.startsWith('/api'))) return;
 		if (event.context.session[clearedSymbol]) {
 			const token = handlers.tokenHandler.get(event);
 			if (token) await handlers.dataHandler.delete(token);
@@ -36,7 +36,7 @@ export const registerHooks = async (nitroApp: NitroApp, options: Required<Plugin
 	});
 
 	nitroApp.hooks.hook('request', async (event) => {
-		if (!event.path.startsWith('/api')) return;
+		if (onlyApi && !event.path.startsWith('/api')) return;
 		const token = handlers.tokenHandler.get(event);
 		let sessionData: PartialH3EventContextSession | undefined;
 		if (token) {
@@ -63,6 +63,6 @@ async function createHandlers(options: Required<PluginOptions>) {
 export default async (nitroApp: NitroApp, options?: PluginOptions) => {
 	const initializationResult = await initialization('Nitro', options);
 	if (!initializationResult) return;
-	await registerHooks(nitroApp, initializationResult.pluginOptions, initializationResult.handlers);
+	await registerHooks(nitroApp, initializationResult.pluginOptions, false, initializationResult.handlers);
 	consola.success('Nitro session initialization successful.');
 };
