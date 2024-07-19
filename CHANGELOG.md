@@ -1,5 +1,24 @@
 # Changelog
 
+## v1.0.1
+
+> [!IMPORTANT]
+> If you are using the `registerHooks` function exported by this package, please replace it with `registerHooksAndSetupCachedHandlers`.
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.0.0...v1.0.1)
+
+### 💅 Refactors
+
+- Move data handler assignment to registerHooks function ([fb90944](https://github.com/kiki-kanri/nitro-session/commit/fb90944))
+
+### 📖 Documentation
+
+- Fix incorrect examples in README ([01d4bea](https://github.com/kiki-kanri/nitro-session/commit/01d4bea))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.0.0
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v0.2.0...v1.0.0)
