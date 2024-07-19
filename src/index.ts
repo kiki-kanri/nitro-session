@@ -12,7 +12,7 @@ import { setupH3EventContextSession } from './utils';
 
 export type {} from './types/h3';
 export type {} from './types/nitropack';
-export type { H3EventContextSession } from './types/session';
+export type * from './types/session';
 
 export const initialization = async (framework: 'Nitro' | 'Nuxt', options?: PluginOptions) => {
 	consola.info(`Initializing ${framework} session...`);
