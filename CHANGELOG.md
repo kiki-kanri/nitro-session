@@ -1,5 +1,33 @@
 # Changelog
 
+## v1.0.0
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v0.2.0...v1.0.0)
+
+### 🚀 Enhancements
+
+- Add runtime utilities ([3f7051b](https://github.com/kiki-kanri/nitro-session/commit/3f7051b))
+- Make session activation path check configurable via parameter for paths starting with /api ([09a5b18](https://github.com/kiki-kanri/nitro-session/commit/09a5b18))
+- Add type exports for h3, nitropack, `H3EventContextSession` in entry point ([5af1ea8](https://github.com/kiki-kanri/nitro-session/commit/5af1ea8))
+- **entry:** Export all session types ([1213a31](https://github.com/kiki-kanri/nitro-session/commit/1213a31))
+
+### 📖 Documentation
+
+- **runtime:** Add comments and examples to utils ([7e79ab3](https://github.com/kiki-kanri/nitro-session/commit/7e79ab3))
+- Update README ([15cc4c3](https://github.com/kiki-kanri/nitro-session/commit/15cc4c3))
+- Add comments to some properties in options ([eb21471](https://github.com/kiki-kanri/nitro-session/commit/eb21471))
+
+### 🏡 Chore
+
+- Update build script ([767d2f6](https://github.com/kiki-kanri/nitro-session/commit/767d2f6))
+- Update dependencies and modify export method of utils in playground ([853a81a](https://github.com/kiki-kanri/nitro-session/commit/853a81a))
+- **playground:** Modify some code in playground ([d160119](https://github.com/kiki-kanri/nitro-session/commit/d160119))
+- Update description and keywords in package.json ([957ee25](https://github.com/kiki-kanri/nitro-session/commit/957ee25))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v0.2.0
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v0.1.0...v0.2.0)
