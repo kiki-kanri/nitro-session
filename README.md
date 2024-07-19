@@ -172,11 +172,7 @@ axiosInstance.interceptors.request.use((request) => {
 
 axiosInstance.interceptors.response.use((response) => {
   const sessionToken = response.headers['set-session'];
-  if (sessionToken !== undefined) {
-    if (sessionToken) window.sessionStorage.removeItem('session');
-    else window.sessionStorage.setItem('session', sessionToken);
-  }
-
+  if (sessionToken !== undefined) sessionToken ? window.sessionStorage.setItem('session', sessionToken) : window.sessionStorage.removeItem('session');
   return response;
 });
 ```
