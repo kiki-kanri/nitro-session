@@ -1,4 +1,4 @@
-declare module '../../src/types/session.ts' {
+declare module '../../src' {
 	interface H3EventContextSession {
 		testValue?: number;
 	}
