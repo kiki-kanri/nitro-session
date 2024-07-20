@@ -9,7 +9,8 @@ export const defaultOptions = {
 	storage: {
 		data: { driver: 'memory' },
 		token: { driver: 'cookie' }
-	}
+	},
+	strictIpValidation: false
 } as const;
 
 export const unstorageKeySymbol = Symbol();

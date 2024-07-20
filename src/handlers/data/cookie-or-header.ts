@@ -2,7 +2,7 @@ import { merge } from 'lodash-es';
 import { AESCipher } from 'node-ciphers';
 
 import type { DataStorageOptions } from '../../types/options';
-import type { PartialH3EventContextSession } from '../../types/session';
+import type { StoredData } from './';
 
 export class CookieOrHeaderDataHandler {
 	#cipher: AESCipher.CBC | AESCipher.CFB | AESCipher.CFB1 | AESCipher.CFB8 | AESCipher.CTR | AESCipher.OFB;
@@ -38,10 +38,10 @@ export class CookieOrHeaderDataHandler {
 
 	get(token: string) {
 		const separatorIndex = token.lastIndexOf(':');
-		if (separatorIndex !== -1) return this.#cipher.decryptToJSON<[number, PartialH3EventContextSession]>(token.slice(0, separatorIndex), token.slice(separatorIndex + 1));
+		if (separatorIndex !== -1) return this.#cipher.decryptToJSON<StoredData>(token.slice(0, separatorIndex), token.slice(separatorIndex + 1));
 	}
 
-	setOrProcessAndGetToken(data: [number, PartialH3EventContextSession]) {
+	setOrProcessAndGetToken(data: StoredData) {
 		const encryptResult = this.#cipher.encryptJSON(data);
 		if (encryptResult) return `${encryptResult.data}:${encryptResult.iv}`;
 	}

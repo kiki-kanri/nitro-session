@@ -41,6 +41,17 @@ export interface PluginOptions {
 		 */
 		token?: TokenStorageOptions;
 	};
+
+	/**
+	 * If true, the request's IP address will be compared to the IP address stored in the session.
+	 *
+	 * If the IP addresses do not match, the session will be considered invalid (similar to session expiration).
+	 *
+	 * If false, the IP address check will be skipped.
+	 *
+	 * @default false
+	 */
+	strictIpValidation?: boolean;
 }
 
 interface UseUnstorageDataStorageOptions {

@@ -34,7 +34,7 @@ export const registerHooksAndSetupCachedHandlers = async (nitroApp: NitroApp, op
 			if (token) await handlers.dataHandler.delete(token);
 			handlers.tokenHandler.delete(event);
 		} else {
-			const token = await handlers.dataHandler.setAndGetToken(event.context.session);
+			const token = await handlers.dataHandler.setAndGetToken(event, event.context.session);
 			if (token) handlers.tokenHandler.set(event, token);
 		}
 	});
@@ -44,7 +44,7 @@ export const registerHooksAndSetupCachedHandlers = async (nitroApp: NitroApp, op
 		const token = handlers.tokenHandler.get(event);
 		let sessionData: PartialH3EventContextSession | undefined;
 		if (token) {
-			sessionData = await handlers.dataHandler.get(token);
+			sessionData = await handlers.dataHandler.get(event, token);
 			if (!sessionData) {
 				await handlers.dataHandler.delete(token);
 				handlers.tokenHandler.delete(event);

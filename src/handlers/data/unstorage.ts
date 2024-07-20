@@ -5,8 +5,8 @@ import type { Storage } from 'unstorage';
 
 import { unstorageKeySymbol } from '../../constants';
 import type { DataStorageOptions } from '../../types/options';
-import type { PartialH3EventContextSession } from '../../types/session';
 import { importModule } from '../../utils';
+import type { StoredData } from './';
 
 export class UnstorageDataHandler {
 	#keyLength: number;
@@ -45,14 +45,14 @@ export class UnstorageDataHandler {
 
 	async get(key: string) {
 		try {
-			const data = await this.#storage.getItem<[number, PartialH3EventContextSession]>(key);
+			const data = await this.#storage.getItem<StoredData>(key);
 			if (data) return (data[1][unstorageKeySymbol] = key), data;
 		} catch (error) {
 			consola.error(error);
 		}
 	}
 
-	async setOrProcessAndGetToken(data: [number, PartialH3EventContextSession]) {
+	async setOrProcessAndGetToken(data: StoredData) {
 		try {
 			const key = data[1][unstorageKeySymbol] || (data[1][unstorageKeySymbol] = nanoid(this.#keyLength));
 			await this.#storage.setItem(key, data);
