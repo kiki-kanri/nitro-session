@@ -1,5 +1,32 @@
 # Changelog
 
+## v1.1.0
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.0.1...v1.1.0)
+
+### 🚀 Enhancements
+
+- Invalidate session if request IP does not match IP in session data ([01cebfe](https://github.com/kiki-kanri/nitro-session/commit/01cebfe))
+- Add more available unstorage drivers ([6f7b475](https://github.com/kiki-kanri/nitro-session/commit/6f7b475))
+
+### 💅 Refactors
+
+- Change type-only imports to import type ([01deb56](https://github.com/kiki-kanri/nitro-session/commit/01deb56))
+
+### 📖 Documentation
+
+- Update README ([a923a2a](https://github.com/kiki-kanri/nitro-session/commit/a923a2a))
+
+### 🏡 Chore
+
+- Update .gitignore ([72cf877](https://github.com/kiki-kanri/nitro-session/commit/72cf877))
+- Remove non-.d.ts files from types folder after build ([c75ee5f](https://github.com/kiki-kanri/nitro-session/commit/c75ee5f))
+- Upgrade dependencies ([b278854](https://github.com/kiki-kanri/nitro-session/commit/b278854))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.0.1
 
 > [!IMPORTANT]
