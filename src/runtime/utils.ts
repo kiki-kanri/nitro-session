@@ -1,4 +1,4 @@
-import { H3Event } from 'h3';
+import type { H3Event } from 'h3';
 import onChange from 'on-change';
 
 import { cachedHandlers, changedSymbol, clearedSymbol, unstorageKeySymbol } from '../constants';
