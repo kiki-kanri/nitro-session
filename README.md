@@ -13,6 +13,7 @@ Easy-to-use nitro session.
 - ✔️ Continuous session between requests using a cookie or header
 - ✔️ Auto-save session
 - ✔️ Store session data using a cookie, header, or [unjs/unstorage](https://github.com/unjs/unstorage) drivers
+- ✔️ Optional strict IP validation to ensure session security
 - ✔️ TypeScript support
 
 ## Environment Requirements
@@ -94,15 +95,29 @@ When using this session module, there are two types of data involved:
 
 The available storage types are:
 
+- azure-app-configuration
+- azure-cosmos
+- azure-key-vault
+- azure-storage-blob
+- azure-storage-table
+- cloudflare-kv-binding
+- cloudflare-kv-http
+- cloudflare-r2-binding
 - cookie/header
 - fs
 - fs-lite
+- http
 - lru-cache
 - memory (default)
 - mongodb
+- netlify-blobs
+- planetscale
 - redis
+- vercel-kv
 
 > [!IMPORTANT]
+> If the driver you are using is not `cookie/header` or `memory`, please visit [here](https://unstorage.unjs.io/drivers) for additional dependencies and considerations.
+>
 > When using `cookie/header` for storage, data will be encrypted and transmitted in requests based on the token type. In this case, no data is stored on the server. Please be aware of potential security risks such as interception, session hijacking, XSS, CSRF, and unauthorized access. Ensure that proper security measures are in place to protect your data.
 
 Example configuration for using Redis as the data storage:
