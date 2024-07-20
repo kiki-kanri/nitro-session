@@ -39,6 +39,9 @@
     "nitropack-session",
     "session"
   ],
+  "engines": {
+    "node": ">=18"
+  },
   "exports": {
     ".": {
       "import": "./index.mjs",
