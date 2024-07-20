@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.1.1
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.1.0...v1.1.1)
+
+### 🏡 Chore
+
+- Add engines field to package.json with Node.js >=18 ([737eb5c](https://github.com/kiki-kanri/nitro-session/commit/737eb5c))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.1.0
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.0.1...v1.1.0)
