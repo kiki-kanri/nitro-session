@@ -1,14 +1,46 @@
 import type { CookieSerializeOptions } from 'cookie-es';
 import type { AESCipherEncodingOptions } from 'node-ciphers';
+import type { AzureAppConfigurationOptions } from 'unstorage/drivers/azure-app-configuration';
+import type { AzureCosmosOptions } from 'unstorage/drivers/azure-cosmos';
+import type { AzureKeyVaultOptions } from 'unstorage/drivers/azure-key-vault';
+import type { AzureStorageBlobOptions } from 'unstorage/drivers/azure-storage-blob';
+import type { AzureStorageTableOptions } from 'unstorage/drivers/azure-storage-table';
+import type { KVOptions as CloudflareKVOptions } from 'unstorage/drivers/cloudflare-kv-binding';
+import type { KVHTTPOptions as CloudflareKVHTTPOptions } from 'unstorage/drivers/cloudflare-kv-http';
+import type { CloudflareR2Options } from 'unstorage/drivers/cloudflare-r2-binding';
 import type { FSStorageOptions } from 'unstorage/drivers/fs';
 import type { FSStorageOptions as FSLiteStorageOptions } from 'unstorage/drivers/fs-lite';
+import type { HTTPOptions } from 'unstorage/drivers/http';
 import type { LRUDriverOptions } from 'unstorage/drivers/lru-cache';
 import type { MongoDbOptions } from 'unstorage/drivers/mongodb';
+import type { NetlifyStoreOptions } from 'unstorage/drivers/netlify-blobs';
+import type { PlanetscaleDriverOptions } from 'unstorage/drivers/planetscale';
 import type { RedisOptions } from 'unstorage/drivers/redis';
+import type { VercelKVOptions } from 'unstorage/drivers/vercel-kv';
 
 export type DataStorageOptions =
 	| DataStorageOptions.CookieOrHeader
-	| ((DataStorageOptions.Fs | DataStorageOptions.FsLite | DataStorageOptions.LruCache | DataStorageOptions.Memory | DataStorageOptions.MongoDB | DataStorageOptions.Redis) & UseUnstorageDataStorageOptions);
+	| (UseUnstorageDataStorageOptions &
+			(
+				| DataStorageOptions.AzureAppConfiguration
+				| DataStorageOptions.AzureCosmos
+				| DataStorageOptions.AzureKeyVault
+				| DataStorageOptions.AzureStorageBlob
+				| DataStorageOptions.AzureStorageTable
+				| DataStorageOptions.CloudflareKV
+				| DataStorageOptions.CloudflareKVHTTP
+				| DataStorageOptions.CloudflareR2
+				| DataStorageOptions.Fs
+				| DataStorageOptions.FsLite
+				| DataStorageOptions.HTTP
+				| DataStorageOptions.LruCache
+				| DataStorageOptions.Memory
+				| DataStorageOptions.MongoDB
+				| DataStorageOptions.NetlifyStore
+				| DataStorageOptions.PlanetscaleDriver
+				| DataStorageOptions.Redis
+				| DataStorageOptions.VercelKV
+			));
 
 export type TokenStorageOptions = TokenStorageOptions.Cookie | TokenStorageOptions.Header;
 
@@ -74,6 +106,46 @@ interface UseUnstorageDataStorageOptions {
 }
 
 export namespace DataStorageOptions {
+	export interface AzureAppConfiguration {
+		driver: 'azure-app-configuration';
+		options: AzureAppConfigurationOptions;
+	}
+
+	export interface AzureCosmos {
+		driver: 'azure-cosmos';
+		options: AzureCosmosOptions;
+	}
+
+	export interface AzureKeyVault {
+		driver: 'azure-key-vault';
+		options: AzureKeyVaultOptions;
+	}
+
+	export interface AzureStorageBlob {
+		driver: 'azure-storage-blob';
+		options: AzureStorageBlobOptions;
+	}
+
+	export interface AzureStorageTable {
+		driver: 'azure-storage-table';
+		options: AzureStorageTableOptions;
+	}
+
+	export interface CloudflareKV {
+		driver: 'cloudflare-kv-binding';
+		options: CloudflareKVOptions;
+	}
+
+	export interface CloudflareKVHTTP {
+		driver: 'cloudflare-kv-http';
+		options: CloudflareKVHTTPOptions;
+	}
+
+	export interface CloudflareR2 {
+		driver: 'cloudflare-r2-binding';
+		options?: CloudflareR2Options;
+	}
+
 	export interface CookieOrHeader {
 		driver: 'cookie/header';
 
@@ -116,6 +188,11 @@ export namespace DataStorageOptions {
 		options?: FSLiteStorageOptions;
 	}
 
+	export interface HTTP {
+		driver: 'http';
+		options: HTTPOptions;
+	}
+
 	export interface LruCache {
 		driver: 'lru-cache';
 		options?: LRUDriverOptions;
@@ -130,9 +207,24 @@ export namespace DataStorageOptions {
 		options: MongoDbOptions;
 	}
 
+	export interface NetlifyStore {
+		driver: 'netlify-blobs';
+		options: NetlifyStoreOptions;
+	}
+
+	export interface PlanetscaleDriver {
+		driver: 'planetscale';
+		options: PlanetscaleDriverOptions;
+	}
+
 	export interface Redis {
 		driver: 'redis';
 		options?: RedisOptions;
+	}
+
+	export interface VercelKV {
+		driver: 'vercel-kv';
+		options: VercelKVOptions;
 	}
 }
 
