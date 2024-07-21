@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.2.0
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.1.2...v1.2.0)
+
+### 🚀 Enhancements
+
+- Add CJS format to build output ([beb319d](https://github.com/kiki-kanri/nitro-session/commit/beb319d))
+
+### 🏡 Chore
+
+- Update keywords list in package.json ([22a818d](https://github.com/kiki-kanri/nitro-session/commit/22a818d))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.1.2
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.1.1...v1.1.2)
