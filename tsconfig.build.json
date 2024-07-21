@@ -1,7 +1,6 @@
 {
   "extends": "@kikiutils/tsconfigs/esnext/es2022.json",
   "compilerOptions": {
-    "baseUrl": "./src",
     "declaration": true,
     "outDir": "./dist"
   },
