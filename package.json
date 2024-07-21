@@ -8,12 +8,15 @@
     "type": "git",
     "url": "git+https://github.com/kiki-kanri/nitro-session.git"
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "scripts": {
     "build": "rollup -c --configPlugin typescript=\"{ tsconfig: './tsconfig.rollup.json' }\"",
     "build:playground": "nitropack build",
     "bumplog": "changelogen --bump",
     "dev": "nitro dev"
   },
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "consola": "^3.2.3",
     "lodash-es": "^4.17.21",
