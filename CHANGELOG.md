@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.1.2
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.1.1...v1.1.2)
+
+### 📦 Build
+
+- Switch build process to Rollup ([1e9bc8b](https://github.com/kiki-kanri/nitro-session/commit/1e9bc8b))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.1.1
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.1.0...v1.1.1)
