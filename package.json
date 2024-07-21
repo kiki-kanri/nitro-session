@@ -8,7 +8,6 @@
     "type": "git",
     "url": "git+https://github.com/kiki-kanri/nitro-session.git"
   },
-  "type": "module",
   "scripts": {
     "build": "rollup -c --configPlugin typescript=\"{ tsconfig: './tsconfig.rollup.json' }\"",
     "build:playground": "nitropack build",
@@ -48,10 +47,12 @@
   "exports": {
     ".": {
       "import": "./index.mjs",
+      "require": "./index.cjs",
       "types": "./index.d.ts"
     },
     "./runtime/*": {
       "import": "./runtime/*.mjs",
+      "require": "./runtime/*.cjs",
       "types": "./runtime/*.d.ts"
     },
     "./types/*": {
