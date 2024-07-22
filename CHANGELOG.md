@@ -14,6 +14,9 @@
 
 ## v1.2.2
 
+> [!IMPORTANT]
+> Deprecated.
+
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.1...v1.2.2)
 
 ### 🏡 Chore
