@@ -10,15 +10,14 @@ Easy-to-use nitro session.
 
 ## Features
 
-- ✔️ Continuous session between requests using a cookie or header
-- ✔️ Auto-save session
-- ✔️ Store session data using a cookie, header, or [unjs/unstorage](https://github.com/unjs/unstorage) drivers
-- ✔️ Optional strict IP validation to ensure session security
-- ✔️ TypeScript support
+- 🔄 Continuous session between requests using a cookie or header
+- 💾 Auto-save session
+- 📦 Store session data using a cookie, header, or [unjs/unstorage](https://github.com/unjs/unstorage) drivers
+- 🔒 Optional strict IP validation to ensure session security
+- 🛠️ TypeScript support
 
 ## Environment Requirements
 
-- ESM (ECMAScript Modules) only
 - Nitro version 2.6.x or higher, but below 3.x
 - Node.js version 18 or higher
 
