@@ -1,7 +1,7 @@
 import type { CookieSerializeOptions } from 'cookie-es';
 import { deleteCookie, getCookie, setCookie } from 'h3';
 import type { H3Event } from 'h3';
-import { merge, omit } from 'lodash';
+import lodash from 'lodash';
 
 import type { TokenStorageOptions } from '../../types/options';
 
@@ -12,14 +12,14 @@ export class CookieTokenHandler {
 	constructor(options: TokenStorageOptions.Cookie['options'], maxAge: number) {
 		this.#name = options?.name || 'session';
 		this.#serializeOptions = {
-			...merge(
+			...lodash.merge(
 				{
 					httpOnly: true,
 					path: '/',
 					sameSite: 'lax',
 					secure: true
 				},
-				omit(options, 'name')
+				lodash.omit(options, 'name')
 			),
 			maxAge
 		};
