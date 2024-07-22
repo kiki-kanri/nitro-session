@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.2.5
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.4...v1.2.5)
+
+### 📦 Build
+
+- Revert to pure ESM build ([fb0fb74](https://github.com/kiki-kanri/nitro-session/commit/fb0fb74))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.2.4
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.3...v1.2.4)
