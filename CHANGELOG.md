@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.2.2
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.1...v1.2.2)
+
+### 🏡 Chore
+
+- Replace lodash-es with lodash ([97b07e4](https://github.com/kiki-kanri/nitro-session/commit/97b07e4))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.2.1
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.0...v1.2.1)
