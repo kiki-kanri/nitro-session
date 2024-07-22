@@ -1,5 +1,6 @@
 import consola from 'consola';
-import lodash from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
+import merge from 'lodash/merge';
 import type { NitroApp } from 'nitropack';
 
 import { cachedHandlers, changedSymbol, clearedSymbol, defaultOptions } from './constants';
@@ -16,7 +17,7 @@ export type * from './types/session';
 
 export const initialization = async (framework: 'Nitro' | 'Nuxt', options?: PluginOptions) => {
 	consola.info(`Initializing ${framework} session...`);
-	const pluginOptions = lodash.merge(defaultOptions, lodash.cloneDeep(options || {}));
+	const pluginOptions = merge(defaultOptions, cloneDeep(options || {}));
 	if (!pluginOptions.enabled) return consola.info(`${framework} session disabled.`);
 	consola.info(`${framework} session configured data with '${pluginOptions.storage.data.driver}' driver.`);
 	consola.info(`${framework} session configured token with '${pluginOptions.storage.token.driver}' driver.`);

@@ -1,4 +1,4 @@
-import lodash from 'lodash';
+import merge from 'lodash/merge';
 import { AESCipher } from 'node-ciphers';
 
 import type { DataStorageOptions } from '../../types/options';
@@ -23,7 +23,7 @@ export class CookieOrHeaderDataHandler {
 		if (![16, 24, 32].includes(Buffer.from(options.key, options.encodingOptions?.key).byteLength)) throw new Error('Invalid cookie/header data encryption key length');
 		this.#cipher = new aesModeToCipherClassMap[options.encryptionMode || 'ctr'](
 			options.key,
-			lodash.merge(
+			merge(
 				{
 					decryptInput: 'base64',
 					encryptOutput: 'base64',
