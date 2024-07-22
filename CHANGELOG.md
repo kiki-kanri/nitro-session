@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.2.1
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.0...v1.2.1)
+
+### 📖 Documentation
+
+- Update README ([d734633](https://github.com/kiki-kanri/nitro-session/commit/d734633))
+
+### 🏡 Chore
+
+- Add main, module, and types fields to package.json ([37b3491](https://github.com/kiki-kanri/nitro-session/commit/37b3491))
+- Update tsconfig.json ([a2bccce](https://github.com/kiki-kanri/nitro-session/commit/a2bccce))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.2.0
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.1.2...v1.2.0)
