@@ -14,6 +14,9 @@
 
 ## v1.2.4
 
+> [!IMPORTANT]
+> Deprecated.
+
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.3...v1.2.4)
 
 ### 🔥 Performance
@@ -29,6 +32,9 @@
 - kiki-kanri
 
 ## v1.2.3
+
+> [!IMPORTANT]
+> Deprecated.
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.2...v1.2.3)
 
@@ -57,6 +63,9 @@
 
 ## v1.2.1
 
+> [!IMPORTANT]
+> Deprecated.
+
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.0...v1.2.1)
 
 ### 📖 Documentation
@@ -73,6 +82,9 @@
 - kiki-kanri
 
 ## v1.2.0
+
+> [!IMPORTANT]
+> Deprecated.
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.1.2...v1.2.0)
 
