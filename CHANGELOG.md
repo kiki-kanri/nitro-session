@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.2.4
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.3...v1.2.4)
+
+### 🔥 Performance
+
+- Update lodash function import method ([7b496ab](https://github.com/kiki-kanri/nitro-session/commit/7b496ab))
+
+### 📖 Documentation
+
+- Update CHANGELOG ([c6043f7](https://github.com/kiki-kanri/nitro-session/commit/c6043f7))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.2.3
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.2...v1.2.3)
