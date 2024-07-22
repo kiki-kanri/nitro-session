@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.2.3
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.2...v1.2.3)
+
+### 🩹 Fixes
+
+- Correct lodash function import method ([c894561](https://github.com/kiki-kanri/nitro-session/commit/c894561))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.2.2
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.1...v1.2.2)
