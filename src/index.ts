@@ -1,6 +1,5 @@
 import consola from 'consola';
-import cloneDeep from 'lodash/cloneDeep';
-import merge from 'lodash/merge';
+import { cloneDeep, merge } from 'lodash-es';
 import type { NitroApp } from 'nitropack';
 
 import { cachedHandlers, changedSymbol, clearedSymbol, defaultOptions } from './constants';
