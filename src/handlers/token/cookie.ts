@@ -1,7 +1,7 @@
 import type { CookieSerializeOptions } from 'cookie-es';
 import { deleteCookie, getCookie, setCookie } from 'h3';
 import type { H3Event } from 'h3';
-import { merge, omit } from 'lodash-es';
+import { merge, omit } from 'lodash';
 
 import type { TokenStorageOptions } from '../../types/options';
 

@@ -1,4 +1,4 @@
-import { merge } from 'lodash-es';
+import { merge } from 'lodash';
 import { AESCipher } from 'node-ciphers';
 
 import type { DataStorageOptions } from '../../types/options';
