@@ -1,9 +1,9 @@
 import consola from 'consola';
+import type { H3Event } from 'h3';
 import { nanoid } from 'nanoid';
 import { createStorage, prefixStorage } from 'unstorage';
 import type { Storage } from 'unstorage';
 
-import { unstorageKeySymbol } from '../../constants';
 import type { DataStorageOptions } from '../../types/options';
 import { importModule } from '../../utils';
 import type { StoredData } from './';
@@ -43,18 +43,18 @@ export class UnstorageDataHandler {
 		}
 	}
 
-	async get(key: string) {
+	async get(event: H3Event, key: string) {
 		try {
 			const data = await this.#storage.getItem<StoredData>(key);
-			if (data) return (data[1][unstorageKeySymbol] = key), data;
+			if (data) return (event.context._nitroSessionUnstorageKey = key), data;
 		} catch (error) {
 			consola.error(error);
 		}
 	}
 
-	async setOrProcessAndGetToken(data: StoredData) {
+	async setOrProcessAndGetToken(event: H3Event, data: StoredData) {
 		try {
-			const key = data[1][unstorageKeySymbol] || (data[1][unstorageKeySymbol] = nanoid(this.#keyLength));
+			const key = event.context._nitroSessionUnstorageKey || (event.context._nitroSessionUnstorageKey = nanoid(this.#keyLength));
 			await this.#storage.setItem(key, data);
 			return key;
 		} catch (error) {

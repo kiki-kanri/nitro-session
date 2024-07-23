@@ -52,10 +52,6 @@
       "import": "./index.mjs",
       "types": "./index.d.ts"
     },
-    "./constants": {
-      "import": "./constants.mjs",
-      "types": "./constants.d.ts"
-    },
     "./runtime/*": {
       "import": "./runtime/*.mjs",
       "types": "./runtime/*.d.ts"

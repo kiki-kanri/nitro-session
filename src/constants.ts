@@ -1,5 +1,6 @@
-export const changedSymbol = Symbol();
-export const clearedSymbol = Symbol();
+import type DataHandler from './handlers/data';
+
+export const cachedHandlers: { data?: DataHandler } = {};
 export const defaultOptions = Object.freeze({
 	enabled: true,
 	maxAge: 86400,
@@ -9,5 +10,3 @@ export const defaultOptions = Object.freeze({
 	},
 	strictIpValidation: false
 } as const);
-
-export const unstorageKeySymbol = Symbol();

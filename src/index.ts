@@ -2,8 +2,7 @@ import consola from 'consola';
 import { cloneDeep, merge } from 'lodash-es';
 import type { NitroApp } from 'nitropack';
 
-import { changedSymbol, clearedSymbol, defaultOptions } from './constants';
-import { cachedHandlers } from './handlers';
+import { cachedHandlers, defaultOptions } from './constants';
 import { DataHandler } from './handlers/data';
 import CookieTokenHandler from './handlers/token/cookie';
 import HeaderTokenHandler from './handlers/token/header';
@@ -29,8 +28,8 @@ export const registerHooksAndSetupCachedHandlers = async (nitroApp: NitroApp, op
 	if (!handlers) handlers = await createHandlers(options);
 	cachedHandlers.data = handlers.dataHandler;
 	nitroApp.hooks.hook('beforeResponse', async (event) => {
-		if (!event.context.session[changedSymbol] || (onlyApi && !event.path.startsWith('/api'))) return;
-		if (event.context.session[clearedSymbol]) {
+		if (!event.context._nitroSessionChanged || (onlyApi && !event.path.startsWith('/api'))) return;
+		if (event.context._nitroSessionCleared) {
 			const token = handlers.tokenHandler.get(event);
 			if (token) await handlers.dataHandler.delete(token);
 			handlers.tokenHandler.delete(event);

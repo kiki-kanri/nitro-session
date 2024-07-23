@@ -1,3 +1,4 @@
+import type { H3Event } from 'h3';
 import { merge } from 'lodash-es';
 import { AESCipher } from 'node-ciphers';
 
@@ -36,12 +37,12 @@ export class CookieOrHeaderDataHandler {
 
 	delete(_: string) {}
 
-	get(token: string) {
+	get(_: H3Event, token: string) {
 		const separatorIndex = token.lastIndexOf(':');
 		if (separatorIndex !== -1) return this.#cipher.decryptToJSON<StoredData>(token.slice(0, separatorIndex), token.slice(separatorIndex + 1));
 	}
 
-	setOrProcessAndGetToken(data: StoredData) {
+	setOrProcessAndGetToken(_: H3Event, data: StoredData) {
 		const encryptResult = this.#cipher.encryptJSON(data);
 		if (encryptResult) return `${encryptResult.data}:${encryptResult.iv}`;
 	}

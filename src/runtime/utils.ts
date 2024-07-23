@@ -1,8 +1,7 @@
 import type { H3Event } from 'h3';
 import onChange from 'on-change';
 
-import { cachedHandlers } from '../handlers';
-import { changedSymbol, clearedSymbol, unstorageKeySymbol } from '../constants';
+import { cachedHandlers } from '../constants';
 import type { PartialH3EventContextSession } from '../types/session';
 import { setupH3EventContextSession } from '../utils';
 
@@ -24,15 +23,8 @@ import { setupH3EventContextSession } from '../utils';
  */
 export const clearH3EventContextSession = (event: H3Event) => {
 	onChange.unsubscribe(event.context.session);
-	setupH3EventContextSession(
-		event,
-		{
-			[changedSymbol]: true,
-			[clearedSymbol]: true,
-			[unstorageKeySymbol]: event.context.session[unstorageKeySymbol]
-		},
-		(event) => delete event.context.session[clearedSymbol]
-	);
+	event.context._nitroSessionChanged = event.context._nitroSessionCleared = true;
+	setupH3EventContextSession(event, {}, (event) => delete event.context._nitroSessionCleared);
 };
 
 /**
@@ -65,7 +57,7 @@ export const deleteH3EventContextSessionStorageData = async (token: string) => a
  * });
  * ```
  */
-export const getH3EventContextSessionToken = (event: H3Event) => event.context.session[unstorageKeySymbol];
+export const getH3EventContextSessionToken = (event: H3Event) => event.context._nitroSessionUnstorageKey;
 
 /**
  * Removes and returns a value from the session context in the H3 request event.

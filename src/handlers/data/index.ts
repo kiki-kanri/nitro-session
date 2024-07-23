@@ -35,7 +35,7 @@ export class DataHandler {
 	}
 
 	async get(event: H3Event, token: string) {
-		const data = await this.#handler.get(token);
+		const data = await this.#handler.get(event, token);
 		if (data && data[0] + this.#maxAgeMilliseconds >= Date.now()) {
 			if (this.#strictIpValidation && this.#getRequestIP(event) !== data[2]) return;
 			return data[1];
@@ -45,7 +45,7 @@ export class DataHandler {
 	async setAndGetToken(event: H3Event, data: PartialH3EventContextSession) {
 		const toSetData: StoredData = [Date.now(), data];
 		if (this.#strictIpValidation) toSetData.push(this.#getRequestIP(event));
-		return await this.#handler.setOrProcessAndGetToken(toSetData);
+		return await this.#handler.setOrProcessAndGetToken(event, toSetData);
 	}
 }
 

@@ -1,7 +1,6 @@
 import type { H3Event } from 'h3';
 import onChange from 'on-change';
 
-import { changedSymbol } from './constants';
 import type { PartialH3EventContextSession } from './types/session';
 
 const _interopDefaultCompat = (e: any) => (e && typeof e === 'object' && 'default' in e ? e.default : e);
@@ -10,7 +9,7 @@ export const setupH3EventContextSession = (event: H3Event, sessionData: PartialH
 	event.context.session = onChange(
 		sessionData,
 		() => {
-			event.context.session[changedSymbol] = true;
+			event.context._nitroSessionChanged = true;
 			onChange.unsubscribe(event.context.session);
 			onChangeCallback?.(event);
 		},
