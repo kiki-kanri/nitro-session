@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.2.8
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.7...v1.2.8)
+
+### 🩹 Fixes
+
+- DefaultOptions should not be frozen ([59070dc](https://github.com/kiki-kanri/nitro-session/commit/59070dc))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.2.7
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.6...v1.2.7)
