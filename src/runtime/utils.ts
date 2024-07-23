@@ -1,7 +1,8 @@
 import type { H3Event } from 'h3';
 import onChange from 'on-change';
 
-import { cachedHandlers, changedSymbol, clearedSymbol, unstorageKeySymbol } from '../constants';
+import { cachedHandlers } from '../handlers';
+import { changedSymbol, clearedSymbol, unstorageKeySymbol } from '../constants';
 import type { PartialH3EventContextSession } from '../types/session';
 import { setupH3EventContextSession } from '../utils';
 

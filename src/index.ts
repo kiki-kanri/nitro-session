@@ -2,7 +2,8 @@ import consola from 'consola';
 import { cloneDeep, merge } from 'lodash-es';
 import type { NitroApp } from 'nitropack';
 
-import { cachedHandlers, changedSymbol, clearedSymbol, defaultOptions } from './constants';
+import { changedSymbol, clearedSymbol, defaultOptions } from './constants';
+import { cachedHandlers } from './handlers';
 import { DataHandler } from './handlers/data';
 import CookieTokenHandler from './handlers/token/cookie';
 import HeaderTokenHandler from './handlers/token/header';

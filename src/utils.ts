@@ -11,8 +11,8 @@ export const setupH3EventContextSession = (event: H3Event, sessionData: PartialH
 		sessionData,
 		() => {
 			event.context.session[changedSymbol] = true;
-			onChangeCallback?.(event);
 			onChange.unsubscribe(event.context.session);
+			onChangeCallback?.(event);
 		},
 		{ ignoreSymbols: true }
 	);

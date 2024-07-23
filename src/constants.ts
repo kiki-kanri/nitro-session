@@ -1,9 +1,6 @@
-import type { DataHandler } from './handlers/data';
-
-export const cachedHandlers: { data?: DataHandler } = {};
 export const changedSymbol = Symbol();
 export const clearedSymbol = Symbol();
-export const defaultOptions = {
+export const defaultOptions = Object.freeze({
 	enabled: true,
 	maxAge: 86400,
 	storage: {
@@ -11,6 +8,6 @@ export const defaultOptions = {
 		token: { driver: 'cookie' }
 	},
 	strictIpValidation: false
-} as const;
+} as const);
 
 export const unstorageKeySymbol = Symbol();
