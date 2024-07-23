@@ -1,7 +1,7 @@
 import type DataHandler from './handlers/data';
 
 export const cachedHandlers: { data?: DataHandler } = {};
-export const defaultOptions = Object.freeze({
+export const defaultOptions = {
 	enabled: true,
 	maxAge: 86400,
 	storage: {
@@ -9,4 +9,4 @@ export const defaultOptions = Object.freeze({
 		token: { driver: 'cookie' }
 	},
 	strictIpValidation: false
-} as const);
+} as const;
