@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.2.7
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.6...v1.2.7)
+
+### 💅 Refactors
+
+- Use event.context._ properties instead of symbols to track session changes ([087be00](https://github.com/kiki-kanri/nitro-session/commit/087be00))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.2.6
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.5...v1.2.6)
