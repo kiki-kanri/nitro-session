@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.2.6
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.5...v1.2.6)
+
+### 🩹 Fixes
+
+- Export symbols to resolve runtime issues post-build ([5ca464c](https://github.com/kiki-kanri/nitro-session/commit/5ca464c))
+
+### 📖 Documentation
+
+- Update CHANGELOG ([247f813](https://github.com/kiki-kanri/nitro-session/commit/247f813))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.2.5
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.4...v1.2.5)
