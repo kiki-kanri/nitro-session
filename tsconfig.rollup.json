@@ -1,4 +1,0 @@
-{
-  "extends": "@kikiutils/tsconfigs/esnext/esnext.json",
-  "include": ["./rollup.config.ts"]
-}
