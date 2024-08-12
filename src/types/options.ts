@@ -60,6 +60,16 @@ export interface PluginOptions {
 	maxAge?: number;
 
 	/**
+	 * If true, the session changes will be persisted even if an error occurs during the request.
+	 *
+	 * This ensures that any modifications to the session are not lost due to an error,
+	 * and they will be saved regardless of whether the request completes successfully.
+	 *
+	 * @default true
+	 */
+	persistSessionOnError?: boolean;
+
+	/**
 	 * Options for storing session data and token.
 	 */
 	storage?: {

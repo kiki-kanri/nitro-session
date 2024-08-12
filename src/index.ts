@@ -1,4 +1,5 @@
 import consola from 'consola';
+import type { H3Event } from 'h3';
 import { cloneDeep, merge } from 'lodash-es';
 import type { NitroApp } from 'nitropack';
 
@@ -27,7 +28,7 @@ export const initialization = async (framework: 'Nitro' | 'Nuxt', options?: Plug
 export const registerHooksAndSetupCachedHandlers = async (nitroApp: NitroApp, options: Required<PluginOptions>, onlyApi?: boolean, handlers?: { dataHandler: DataHandler; tokenHandler: CookieTokenHandler | HeaderTokenHandler }) => {
 	if (!handlers) handlers = await createHandlers(options);
 	cachedHandlers.data = handlers.dataHandler;
-	nitroApp.hooks.hook('beforeResponse', async (event) => {
+	const processResponseEvent = async (event: H3Event) => {
 		if (!event.context._nitroSessionChanged || (onlyApi && !event.path.startsWith('/api'))) return;
 		if (event.context._nitroSessionCleared) {
 			const token = handlers.tokenHandler.get(event);
@@ -37,8 +38,10 @@ export const registerHooksAndSetupCachedHandlers = async (nitroApp: NitroApp, op
 			const token = await handlers.dataHandler.setAndGetToken(event, event.context.session);
 			if (token) handlers.tokenHandler.set(event, token);
 		}
-	});
+	};
 
+	nitroApp.hooks.hook('beforeResponse', processResponseEvent);
+	nitroApp.hooks.hook('error', async (_, { event }) => event && options.persistSessionOnError && (await processResponseEvent(event)));
 	nitroApp.hooks.hook('request', async (event) => {
 		if (onlyApi && !event.path.startsWith('/api')) return;
 		const token = handlers.tokenHandler.get(event);
