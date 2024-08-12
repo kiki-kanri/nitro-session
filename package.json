@@ -31,7 +31,7 @@
     "@types/lodash-es": "^4.17.12",
     "changelogen": "^0.5.5",
     "nitropack": "^2.9.7",
-    "ts-project-builder": "3.0.0",
+    "ts-project-builder": "3.0.1",
     "tslib": "^2.6.3"
   },
   "keywords": [
