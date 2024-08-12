@@ -1,6 +1,6 @@
 {
   "name": "@kikiutils/nitro-session",
-  "version": "1.2.8",
+  "version": "1.3.0",
   "description": "Easy-to-use nitro session.",
   "license": "MIT",
   "author": "kiki-kanri",

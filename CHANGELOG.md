@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.3.0
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.8...v1.3.0)
+
+### 🚀 Enhancements
+
+- Save session changes even when request processing fails ([97d8e33](https://github.com/kiki-kanri/nitro-session/commit/97d8e33))
+
+### 🏡 Chore
+
+- Remove rollup files and dependencies and switch to builder build ([c7c7ba2](https://github.com/kiki-kanri/nitro-session/commit/c7c7ba2))
+- Upgrade dependencies ([b7118dd](https://github.com/kiki-kanri/nitro-session/commit/b7118dd))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.2.8
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.2.7...v1.2.8)
