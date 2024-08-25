@@ -9,7 +9,6 @@
     "url": "git+https://github.com/kiki-kanri/nitro-session.git"
   },
   "type": "module",
-  "module": "./index.mjs",
   "scripts": {
     "build": "ts-project-builder ./src/index.ts ./src/runtime/utils.ts -f esm --clean --preserve-modules",
     "build:playground": "nitropack build",
