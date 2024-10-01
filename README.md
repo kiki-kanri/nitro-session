@@ -19,7 +19,7 @@ Easy-to-use nitro session.
 ## Environment Requirements
 
 - ESM (ECMAScript Modules) only
-- Nitro version 2.6.x or higher, but below 3.x
+- Nitro version 2.6.x or higher
 - Node.js version 18 or higher
 
 ## Installation
