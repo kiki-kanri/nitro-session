@@ -1,7 +1,12 @@
 import consola from 'consola';
 import type { H3Event } from 'h3';
 import { cloneDeep, merge } from 'lodash-es';
+// @ts-expect-error
+import type { NitroApp } from 'nitro/types';
+// @ts-expect-error
 import type { NitroApp } from 'nitropack';
+// @ts-expect-error
+import type { NitroApp } from 'nitropack-nightly/types';
 
 import { cachedHandlers, defaultOptions } from './constants';
 import { DataHandler } from './handlers/data';
@@ -12,7 +17,7 @@ import type { PartialH3EventContextSession } from './types/session';
 import { setupH3EventContextSession } from './utils';
 
 export type {} from './types/h3';
-export type {} from './types/nitropack';
+export type {} from './types/nitro';
 export type * from './types/session';
 
 export const initialization = async (framework: 'Nitro' | 'Nuxt', options?: PluginOptions) => {
