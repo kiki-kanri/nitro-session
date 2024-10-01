@@ -1,5 +1,30 @@
 # Changelog
 
+## v1.4.0
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.3.1...v1.4.0)
+
+### 🚀 Enhancements
+
+- Update types to support nitro v3 ([d1791c5](https://github.com/kiki-kanri/nitro-session/commit/d1791c5))
+
+### 📖 Documentation
+
+- Update README ([9bd8bc9](https://github.com/kiki-kanri/nitro-session/commit/9bd8bc9))
+
+### 🏡 Chore
+
+- Remove unnecessary settings from package.json ([0f1a8d4](https://github.com/kiki-kanri/nitro-session/commit/0f1a8d4))
+- Remove empty file ([eb3e14d](https://github.com/kiki-kanri/nitro-session/commit/eb3e14d))
+- Upgrade dependencies ([f4a0deb](https://github.com/kiki-kanri/nitro-session/commit/f4a0deb))
+- Modify file permissions and update script ([101a23f](https://github.com/kiki-kanri/nitro-session/commit/101a23f))
+- Upgrade dependencies ([45a8ac2](https://github.com/kiki-kanri/nitro-session/commit/45a8ac2))
+- Upgrade nitropack to nitro v3 beta version ([e9be834](https://github.com/kiki-kanri/nitro-session/commit/e9be834))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.3.1
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.3.0...v1.3.1)
