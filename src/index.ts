@@ -47,7 +47,7 @@ export const registerHooksAndSetupCachedHandlers = async (nitroApp: NitroApp, op
 	};
 
 	nitroApp.hooks.hook('beforeResponse', processResponseEvent);
-	nitroApp.hooks.hook('error', async (_, { event }) => event && options.persistSessionOnError && (await processResponseEvent(event)));
+	// nitroApp.hooks.hook('error', async (_, { event }) => event && options.persistSessionOnError && (await processResponseEvent(event)));
 	nitroApp.hooks.hook('request', async (event) => {
 		if (onlyApi && !event.path.startsWith('/api')) return;
 		const token = handlers.tokenHandler.get(event);

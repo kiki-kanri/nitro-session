@@ -67,7 +67,7 @@ export interface PluginOptions {
 	 *
 	 * @default true
 	 */
-	persistSessionOnError?: boolean;
+	// persistSessionOnError?: boolean;
 
 	/**
 	 * Options for storing session data and token.
