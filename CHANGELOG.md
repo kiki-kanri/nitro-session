@@ -1,5 +1,34 @@
 # Changelog
 
+## v2.0.0
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.4.0...v2.0.0)
+
+### Major Changes
+
+The method for handling sessions during an error has now changed. For details, please read the `Persist session on error` section in the [README](./README.md#persist-session-on-error).
+
+### 🚀 Enhancements
+
+- Export `processResponseEvent` function ([49efcfb](https://github.com/kiki-kanri/nitro-session/commit/49efcfb))
+
+### 📖 Documentation
+
+- Update README ([d9d5718](https://github.com/kiki-kanri/nitro-session/commit/d9d5718))
+
+### 🏡 Chore
+
+- Update nitro.config ([15aa4d6](https://github.com/kiki-kanri/nitro-session/commit/15aa4d6))
+- ⚠️ Remove `persistSessionOnError` setting and related functionality ([2d2e7f5](https://github.com/kiki-kanri/nitro-session/commit/2d2e7f5))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️ Remove `persistSessionOnError` setting and related functionality ([2d2e7f5](https://github.com/kiki-kanri/nitro-session/commit/2d2e7f5))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.4.0
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.3.1...v1.4.0)
