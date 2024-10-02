@@ -221,6 +221,39 @@ export default defineEventHandler((event) => {
 > [!IMPORTANT]
 > The session can only store serializable data.
 
+## Persist session on error
+
+> [!IMPORTANT]
+> This will replace the default Nitro error page.
+
+Due to a bug in one or more of the packages (h3/hookable/nitro), to ensure that the session can still be properly handled after an error occurs during API processing, you need to modify the `errorHandler` setting in the `nitro.config`:
+
+```typescript
+export default defineNitroConfig({
+  errorHandler: './error-handler'
+});
+```
+
+Contents of `error-handler.ts` without using `send` function:
+
+```typescript
+export default () => {};
+```
+
+Contents of `error-handler.ts` using `send` function:
+
+```typescript
+import { processResponseEvent } from '@kikiutils/nitro-session';
+import type { H3Error, H3Event } from 'h3';
+
+export default async (_: H3Error, event: H3Event) => {
+  await processResponseEvent(event);
+  send(event, 'internal server error'); // Or other error message
+};
+```
+
+Visit [this page](https://nitro.unjs.io/config#errorhandler) for more information about the error handler.
+
 ## Runtime Utils
 
 During runtime, the following utils are available for manipulating the session. Related comments and examples are provided in [this file](./src/runtime/utils.ts).
