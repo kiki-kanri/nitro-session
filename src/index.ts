@@ -30,10 +30,11 @@ export const initialization = async (framework: 'Nitro' | 'Nuxt', options?: Plug
 	return { handlers, pluginOptions };
 };
 
+export let processResponseEvent: (event: H3Event) => Promise<void>;
 export const registerHooksAndSetupCachedHandlers = async (nitroApp: NitroApp, options: Required<PluginOptions>, onlyApi?: boolean, handlers?: { dataHandler: DataHandler; tokenHandler: CookieTokenHandler | HeaderTokenHandler }) => {
 	if (!handlers) handlers = await createHandlers(options);
 	cachedHandlers.data = handlers.dataHandler;
-	const processResponseEvent = async (event: H3Event) => {
+	processResponseEvent = async (event: H3Event) => {
 		if (!event.context._nitroSessionChanged || (onlyApi && !event.path.startsWith('/api'))) return;
 		if (event.context._nitroSessionCleared) {
 			const token = handlers.tokenHandler.get(event);
