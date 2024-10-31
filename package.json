@@ -19,8 +19,8 @@
   "dependencies": {
     "consola": "^3.2.3",
     "lodash-es": "^4.17.21",
-    "nanoid": "^5.0.7",
-    "node-ciphers": "1.0.2",
+    "nanoid": "^5.0.8",
+    "node-ciphers": "1.1.4",
     "on-change": "^5.0.1",
     "unstorage": "^1.12.0"
   },
@@ -30,8 +30,8 @@
     "@types/lodash-es": "^4.17.12",
     "changelogen": "^0.5.7",
     "nitro": "npm:nitro-nightly@3.0.0-beta-28796231.359af68d",
-    "ts-project-builder": "3.0.1",
-    "tslib": "^2.7.0"
+    "ts-project-builder": "3.3.0",
+    "tslib": "^2.8.0"
   },
   "keywords": [
     "nitro",
@@ -41,7 +41,7 @@
     "session"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=18.12.1"
   },
   "exports": {
     ".": {
