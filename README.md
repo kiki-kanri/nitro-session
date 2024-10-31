@@ -268,11 +268,11 @@ During runtime, the following utils are available for manipulating the session. 
 [MIT License](./LICENSE)
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/@kikiutils/nitro-session/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-version-href]: https://npmjs.com/package/@kikiutils/nitro-session
+[npm-version-src]: https://img.shields.io/npm/v/@kikiutils/nitro-session/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
 
-[npm-downloads-src]: https://img.shields.io/npm/dm/@kikiutils/nitro-session.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-downloads-href]: https://npmjs.com/package/@kikiutils/nitro-session
+[npm-downloads-src]: https://img.shields.io/npm/dm/@kikiutils/nitro-session.svg?style=flat&colorA=18181B&colorB=28CF8D
 
-[license-src]: https://img.shields.io/npm/l/@kikiutils/nitro-session.svg?style=flat&colorA=18181B&colorB=28CF8D
 [license-href]: https://github.com/kiki-kanri/nitro-session/blob/main/LICENSE
+[license-src]: https://img.shields.io/npm/l/@kikiutils/nitro-session.svg?style=flat&colorA=18181B&colorB=28CF8D
