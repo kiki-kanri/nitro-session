@@ -16,6 +16,7 @@
     "dev": "nitro dev",
     "release": "pnpm run build && changelogen --push --release && sh ./build-and-publish.sh"
   },
+  "types": "./index.d.ts",
   "dependencies": {
     "consola": "^3.2.3",
     "lodash-es": "^4.17.21",
