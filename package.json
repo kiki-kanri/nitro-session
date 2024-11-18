@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@kikiutils/changelogen": "^0.7.0",
-    "@kikiutils/prettierrc": "^1.3.2",
+    "@kikiutils/eslint-config": "^0.3.0",
     "@kikiutils/tsconfigs": "^3.0.2",
     "@types/lodash-es": "^4.17.12",
     "cookie-es": "^1.2.2",
