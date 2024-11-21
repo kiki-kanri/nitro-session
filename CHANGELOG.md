@@ -1,5 +1,37 @@
 # Changelog
 
+## v2.0.1
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v2.0.0...v2.0.1)
+
+### 🩹 Fixes
+
+- Resolve type error ([73418f1](https://github.com/kiki-kanri/nitro-session/commit/73418f1))
+
+### 🏡 Chore
+
+- Modify tsconfig.build.json ([84979da](https://github.com/kiki-kanri/nitro-session/commit/84979da))
+- Upgrade dependencies ([08bf606](https://github.com/kiki-kanri/nitro-session/commit/08bf606))
+- Update package.json ([e1590d3](https://github.com/kiki-kanri/nitro-session/commit/e1590d3))
+- Switch changelog generation package ([3cf8d42](https://github.com/kiki-kanri/nitro-session/commit/3cf8d42))
+- Add release script to package.json ([0be8fc1](https://github.com/kiki-kanri/nitro-session/commit/0be8fc1))
+- Remove .npmrc and update dependency list ([f36e7e3](https://github.com/kiki-kanri/nitro-session/commit/f36e7e3))
+- Modify build configs ([5315148](https://github.com/kiki-kanri/nitro-session/commit/5315148))
+- Add types field to package.json ([05324a7](https://github.com/kiki-kanri/nitro-session/commit/05324a7))
+- Remove types field from package.json ([0cd3932](https://github.com/kiki-kanri/nitro-session/commit/0cd3932))
+- Upgrade dependencies ([7317ec8](https://github.com/kiki-kanri/nitro-session/commit/7317ec8))
+- Replace Prettier with ESLint, add related files, and update VSCode settings ([6a64e06](https://github.com/kiki-kanri/nitro-session/commit/6a64e06))
+- Modify scripts in package.json ([125ea2c](https://github.com/kiki-kanri/nitro-session/commit/125ea2c))
+
+### 🎨 Styles
+
+- Reorder badge URLs in README ([ca2df78](https://github.com/kiki-kanri/nitro-session/commit/ca2df78))
+- Format and lint all files ([a684b60](https://github.com/kiki-kanri/nitro-session/commit/a684b60))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v2.0.0
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v1.4.0...v2.0.0)
