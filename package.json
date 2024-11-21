@@ -37,7 +37,9 @@
     "build:playground": "nitro build",
     "bumplog": "changelogen --bump",
     "dev": "nitro dev",
-    "release": "pnpm run build && changelogen --push --release && sh ./build-and-publish.sh"
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "release": "pnpm run lint && pnpm run build && changelogen --push --release && sh ./build-and-publish.sh"
   },
   "dependencies": {
     "consola": "^3.2.3",
