@@ -6,28 +6,6 @@ import type { PartialH3EventContextSession } from '../types/session';
 import { setupH3EventContextSession } from '../utils';
 
 /**
- * Clears the session data in the H3 request event context.
- *
- * Executing this function will not immediately update the session data in storage. The update will occur before the response ends. To clear the data immediately, please use `deleteH3EventContextSessionStorageData`.
- *
- * @param {H3Event} event - The H3 request event object.
- *
- * @example
- * ```typescript
- * // Example usage in an event handler to clear the session
- * export default defineEventHandler((event) => {
- *   clearH3EventContextSession(event);
- *   // Remaining operations...
- * });
- * ```
- */
-export const clearH3EventContextSession = (event: H3Event) => {
-	onChange.unsubscribe(event.context.session);
-	event.context._nitroSessionChanged = event.context._nitroSessionCleared = true;
-	setupH3EventContextSession(event, {}, (event) => delete event.context._nitroSessionCleared);
-};
-
-/**
  * Deletes the session storage data associated with the given token.
  *
  * @param {string} token - The token associated with the session data to be deleted.
@@ -60,6 +38,28 @@ export const deleteH3EventContextSessionStorageData = async (token: string) => a
 export const getH3EventContextSessionToken = (event: H3Event) => event.context._nitroSessionUnstorageKey;
 
 /**
+ * Clears the session data in the H3 request event context.
+ *
+ * Executing this function will not immediately update the session data in storage. The update will occur before the response ends. To clear the data immediately, please use `deleteH3EventContextSessionStorageData`.
+ *
+ * @param {H3Event} event - The H3 request event object.
+ *
+ * @example
+ * ```typescript
+ * // Example usage in an event handler to clear the session
+ * export default defineEventHandler((event) => {
+ *   clearH3EventContextSession(event);
+ *   // Remaining operations...
+ * });
+ * ```
+ */
+export function clearH3EventContextSession(event: H3Event) {
+	onChange.unsubscribe(event.context.session);
+	event.context._nitroSessionChanged = event.context._nitroSessionCleared = true;
+	setupH3EventContextSession(event, {}, (event) => delete event.context._nitroSessionCleared);
+}
+
+/**
  * Removes and returns a value from the session context in the H3 request event.
  *
  * This function retrieves the value associated with the specified key from the session context,
@@ -79,8 +79,8 @@ export const getH3EventContextSessionToken = (event: H3Event) => event.context._
  * });
  * ```
  */
-export const popH3EventContextSession = <K extends keyof PartialH3EventContextSession>(event: H3Event, key: K) => {
+export function popH3EventContextSession<K extends keyof PartialH3EventContextSession>(event: H3Event, key: K) {
 	const value = event.context.session[key];
 	delete event.context.session[key];
 	return value;
-};
+}

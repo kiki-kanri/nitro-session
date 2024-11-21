@@ -7,7 +7,7 @@ export const defaultOptions = {
 	persistSessionOnError: true,
 	storage: {
 		data: { driver: 'memory' },
-		token: { driver: 'cookie' }
+		token: { driver: 'cookie' },
 	},
-	strictIpValidation: false
+	strictIpValidation: false,
 } as const;

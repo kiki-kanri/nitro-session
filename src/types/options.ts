@@ -19,28 +19,28 @@ import type { RedisOptions } from 'unstorage/drivers/redis';
 import type { VercelKVOptions } from 'unstorage/drivers/vercel-kv';
 
 export type DataStorageOptions =
-	| DataStorageOptions.CookieOrHeader
-	| (UseUnstorageDataStorageOptions &
-			(
-				| DataStorageOptions.AzureAppConfiguration
-				| DataStorageOptions.AzureCosmos
-				| DataStorageOptions.AzureKeyVault
-				| DataStorageOptions.AzureStorageBlob
-				| DataStorageOptions.AzureStorageTable
-				| DataStorageOptions.CloudflareKV
-				| DataStorageOptions.CloudflareKVHTTP
-				| DataStorageOptions.CloudflareR2
-				| DataStorageOptions.Fs
-				| DataStorageOptions.FsLite
-				| DataStorageOptions.HTTP
-				| DataStorageOptions.LruCache
-				| DataStorageOptions.Memory
-				| DataStorageOptions.MongoDB
-				| DataStorageOptions.NetlifyStore
-				| DataStorageOptions.PlanetscaleDriver
-				| DataStorageOptions.Redis
-				| DataStorageOptions.VercelKV
-			));
+  | ((
+    | DataStorageOptions.AzureAppConfiguration
+    | DataStorageOptions.AzureCosmos
+    | DataStorageOptions.AzureKeyVault
+    | DataStorageOptions.AzureStorageBlob
+    | DataStorageOptions.AzureStorageTable
+    | DataStorageOptions.CloudflareKV
+    | DataStorageOptions.CloudflareKVHTTP
+    | DataStorageOptions.CloudflareR2
+    | DataStorageOptions.Fs
+    | DataStorageOptions.FsLite
+    | DataStorageOptions.HTTP
+    | DataStorageOptions.LruCache
+    | DataStorageOptions.Memory
+    | DataStorageOptions.MongoDB
+    | DataStorageOptions.NetlifyStore
+    | DataStorageOptions.PlanetscaleDriver
+    | DataStorageOptions.Redis
+    | DataStorageOptions.VercelKV
+			) &
+			UseUnstorageDataStorageOptions)
+	| DataStorageOptions.CookieOrHeader;
 
 export type TokenStorageOptions = TokenStorageOptions.Cookie | TokenStorageOptions.Header;
 
@@ -115,6 +115,7 @@ interface UseUnstorageDataStorageOptions {
 	};
 }
 
+// eslint-disable-next-line ts/no-namespace
 export namespace DataStorageOptions {
 	export interface AzureAppConfiguration {
 		driver: 'azure-app-configuration';
@@ -238,6 +239,7 @@ export namespace DataStorageOptions {
 	}
 }
 
+// eslint-disable-next-line ts/no-namespace
 export namespace TokenStorageOptions {
 	export interface Cookie {
 		driver: 'cookie';
@@ -251,14 +253,14 @@ export namespace TokenStorageOptions {
 		 *   secure: true
 		 * }
 		 */
-		options?: CookieSerializeOptions & {
+		options?: {
 			/**
 			 * The cookie name for storing the token.
 			 *
 			 * @default 'session'
 			 */
 			name?: string;
-		};
+		} & CookieSerializeOptions;
 	}
 
 	export interface Header {

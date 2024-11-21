@@ -1,8 +1,10 @@
 import type { H3Event } from 'h3';
 import { merge } from 'lodash-es';
+import { Buffer } from 'node:buffer';
 import { AESCipher } from 'node-ciphers';
 
 import type { DataStorageOptions } from '../../types/options';
+
 import type { StoredData } from './';
 
 export class CookieOrHeaderDataHandler {
@@ -15,7 +17,7 @@ export class CookieOrHeaderDataHandler {
 			cfb1: AESCipher.CFB1,
 			cfb8: AESCipher.CFB8,
 			ctr: AESCipher.CTR,
-			ofb: AESCipher.OFB
+			ofb: AESCipher.OFB,
 		} as const;
 
 		if (options?.encryptionMode && !aesModeToCipherClassMap[options.encryptionMode]) throw new Error(`Invalid cookie/header data encryption mode: ${options.encryptionMode}`);
@@ -28,10 +30,10 @@ export class CookieOrHeaderDataHandler {
 				{
 					decryptInput: 'base64',
 					encryptOutput: 'base64',
-					iv: 'base64'
+					iv: 'base64',
 				},
-				options.encodingOptions
-			)
+				options.encodingOptions,
+			),
 		);
 	}
 

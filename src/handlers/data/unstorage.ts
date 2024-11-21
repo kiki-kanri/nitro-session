@@ -6,6 +6,7 @@ import type { Storage } from 'unstorage';
 
 import type { DataStorageOptions } from '../../types/options';
 import { importModule } from '../../utils';
+
 import type { StoredData } from './';
 
 export class UnstorageDataHandler {
@@ -46,7 +47,8 @@ export class UnstorageDataHandler {
 	async get(event: H3Event, key: string) {
 		try {
 			const data = await this.#storage.getItem<StoredData>(key);
-			if (data) return (event.context._nitroSessionUnstorageKey = key), data;
+			if (data) event.context._nitroSessionUnstorageKey = key;
+			return data;
 		} catch (error) {
 			consola.error(error);
 		}

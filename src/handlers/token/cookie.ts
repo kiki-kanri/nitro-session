@@ -17,11 +17,11 @@ export class CookieTokenHandler {
 					httpOnly: true,
 					path: '/',
 					sameSite: 'lax',
-					secure: true
+					secure: true,
 				},
-				omit(options, 'name')
+				omit(options, 'name'),
 			),
-			maxAge
+			maxAge,
 		};
 	}
 

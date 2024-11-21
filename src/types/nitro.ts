@@ -6,14 +6,14 @@ declare module 'nitro/types' {
 	}
 }
 
-// @ts-expect-error
+// @ts-expect-error Ignore this error.
 declare module 'nitropack' {
 	export interface NitroRuntimeConfig {
 		nitroSession?: PluginOptions;
 	}
 }
 
-// @ts-expect-error
+// @ts-expect-error Ignore this error.
 declare module 'nitropack-nightly/types' {
 	export interface NitroRuntimeConfig {
 		nitroSession?: PluginOptions;

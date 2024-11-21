@@ -1,12 +1,11 @@
 import consola from 'consola';
 import type { H3Event } from 'h3';
 import { cloneDeep, merge } from 'lodash-es';
-// @ts-expect-error
 import type { NitroApp } from 'nitro/types';
-// @ts-expect-error
-import type { NitroApp } from 'nitropack';
-// @ts-expect-error
-import type { NitroApp } from 'nitropack-nightly/types';
+// @ts-expect-error Ignore this error.
+import type { NitroApp as NitropackApp } from 'nitropack';
+// @ts-expect-error Ignore this error.
+import type { NitroApp as NitropackNightlyApp } from 'nitropack-nightly/types';
 
 import { cachedHandlers, defaultOptions } from './constants';
 import { DataHandler } from './handlers/data';
@@ -20,7 +19,19 @@ export type {} from './types/h3';
 export type {} from './types/nitro';
 export type * from './types/session';
 
-export const initialization = async (framework: 'Nitro' | 'Nuxt', options?: PluginOptions) => {
+// eslint-disable-next-line import/no-mutable-exports
+export let processResponseEvent: (event: H3Event) => Promise<void>;
+
+async function createHandlers(options: Required<PluginOptions>) {
+	const dataHandler = await DataHandler.createInstance(options);
+	let tokenHandler;
+	if (options.storage?.token?.driver === 'cookie') tokenHandler = new CookieTokenHandler(options.storage.token.options, options.maxAge);
+	else if (options.storage?.token?.driver === 'header') tokenHandler = new HeaderTokenHandler(options.storage?.token?.options);
+	else throw new Error('Invalid token storage driver');
+	return { dataHandler, tokenHandler };
+}
+
+export async function initialization(framework: 'Nitro' | 'Nuxt', options?: PluginOptions) {
 	consola.info(`Initializing ${framework} session...`);
 	const pluginOptions = merge(defaultOptions, cloneDeep(options || {}));
 	if (!pluginOptions.enabled) return consola.info(`${framework} session disabled.`);
@@ -28,10 +39,9 @@ export const initialization = async (framework: 'Nitro' | 'Nuxt', options?: Plug
 	consola.info(`${framework} session configured token with '${pluginOptions.storage.token.driver}' driver.`);
 	const handlers = await createHandlers(pluginOptions);
 	return { handlers, pluginOptions };
-};
+}
 
-export let processResponseEvent: (event: H3Event) => Promise<void>;
-export const registerHooksAndSetupCachedHandlers = async (nitroApp: NitroApp, options: Required<PluginOptions>, onlyApi?: boolean, handlers?: { dataHandler: DataHandler; tokenHandler: CookieTokenHandler | HeaderTokenHandler }) => {
+export async function registerHooksAndSetupCachedHandlers(nitroApp: NitroApp | NitropackApp | NitropackNightlyApp, options: Required<PluginOptions>, onlyApi?: boolean, handlers?: { dataHandler: DataHandler; tokenHandler: CookieTokenHandler | HeaderTokenHandler }) {
 	if (!handlers) handlers = await createHandlers(options);
 	cachedHandlers.data = handlers.dataHandler;
 	processResponseEvent = async (event: H3Event) => {
@@ -62,18 +72,9 @@ export const registerHooksAndSetupCachedHandlers = async (nitroApp: NitroApp, op
 
 		setupH3EventContextSession(event, sessionData || {});
 	});
-};
-
-async function createHandlers(options: Required<PluginOptions>) {
-	const dataHandler = await DataHandler.createInstance(options);
-	let tokenHandler;
-	if (options.storage?.token?.driver === 'cookie') tokenHandler = new CookieTokenHandler(options.storage.token.options, options.maxAge);
-	else if (options.storage?.token?.driver === 'header') tokenHandler = new HeaderTokenHandler(options.storage?.token?.options);
-	else throw new Error('Invalid token storage driver');
-	return { dataHandler, tokenHandler };
 }
 
-export default async (nitroApp: NitroApp, options?: PluginOptions) => {
+export default async (nitroApp: NitroApp | NitropackApp | NitropackNightlyApp, options?: PluginOptions) => {
 	const initializationResult = await initialization('Nitro', options);
 	if (!initializationResult) return;
 	await registerHooksAndSetupCachedHandlers(nitroApp, initializationResult.pluginOptions, false, initializationResult.handlers);

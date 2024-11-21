@@ -181,7 +181,7 @@ import axios from 'axios';
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request) => {
-  request.headers['session'] = window.sessionStorage.getItem('session');
+  request.headers.session = window.sessionStorage.getItem('session');
   return request;
 });
 
