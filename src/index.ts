@@ -1,16 +1,12 @@
 import consola from 'consola';
 import type { H3Event } from 'h3';
 import { cloneDeep, merge } from 'lodash-es';
-import type { NitroApp } from 'nitro/types';
-// @ts-expect-error Ignore this error.
-import type { NitroApp as NitropackApp } from 'nitropack';
-// @ts-expect-error Ignore this error.
-import type { NitroApp as NitropackNightlyApp } from 'nitropack-nightly/types';
 
 import { cachedHandlers, defaultOptions } from './constants';
 import { DataHandler } from './handlers/data';
 import CookieTokenHandler from './handlers/token/cookie';
 import HeaderTokenHandler from './handlers/token/header';
+import type { NitroApp } from './types/nitro';
 import type { PluginOptions } from './types/options';
 import type { PartialH3EventContextSession } from './types/session';
 import { setupH3EventContextSession } from './utils';
@@ -41,10 +37,10 @@ export async function initialization(framework: 'Nitro' | 'Nuxt', options?: Plug
 	return { handlers, pluginOptions };
 }
 
-export async function registerHooksAndSetupCachedHandlers(nitroApp: NitroApp | NitropackApp | NitropackNightlyApp, options: Required<PluginOptions>, onlyApi?: boolean, handlers?: { dataHandler: DataHandler; tokenHandler: CookieTokenHandler | HeaderTokenHandler }) {
+export async function registerHooksAndSetupCachedHandlers(nitroApp: NitroApp, options: Required<PluginOptions>, onlyApi?: boolean, handlers?: { dataHandler: DataHandler; tokenHandler: CookieTokenHandler | HeaderTokenHandler }) {
 	if (!handlers) handlers = await createHandlers(options);
 	cachedHandlers.data = handlers.dataHandler;
-	processResponseEvent = async (event: H3Event) => {
+	processResponseEvent = async (event) => {
 		if (!event.context._nitroSessionChanged || (onlyApi && !event.path.startsWith('/api'))) return;
 		if (event.context._nitroSessionCleared) {
 			const token = handlers.tokenHandler.get(event);
@@ -74,7 +70,7 @@ export async function registerHooksAndSetupCachedHandlers(nitroApp: NitroApp | N
 	});
 }
 
-export default async (nitroApp: NitroApp | NitropackApp | NitropackNightlyApp, options?: PluginOptions) => {
+export default async (nitroApp: NitroApp, options?: PluginOptions) => {
 	const initializationResult = await initialization('Nitro', options);
 	if (!initializationResult) return;
 	await registerHooksAndSetupCachedHandlers(nitroApp, initializationResult.pluginOptions, false, initializationResult.handlers);
