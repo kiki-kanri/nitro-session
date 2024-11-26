@@ -1,5 +1,22 @@
 # Changelog
 
+## v2.0.2
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v2.0.1...v2.0.2)
+
+### 🏡 Chore
+
+- Modify eslint config ([6364386](https://github.com/kiki-kanri/nitro-session/commit/6364386))
+- Upgrade dependencies ([0074f2f](https://github.com/kiki-kanri/nitro-session/commit/0074f2f))
+
+### 🎨 Styles
+
+- Format and lint all files ([657fab7](https://github.com/kiki-kanri/nitro-session/commit/657fab7))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v2.0.1
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v2.0.0...v2.0.1)
