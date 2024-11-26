@@ -1,3 +1,1 @@
-import { createConfig } from '@kikiutils/eslint-config';
-
-export default createConfig('node', { markdown: false });
+export { node as default } from '@kikiutils/eslint-config';
