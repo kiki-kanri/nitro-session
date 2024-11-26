@@ -44,14 +44,14 @@
   "dependencies": {
     "consola": "^3.2.3",
     "lodash-es": "^4.17.21",
-    "nanoid": "^5.0.8",
+    "nanoid": "^5.0.9",
     "node-ciphers": "1.1.5",
     "on-change": "^5.0.1",
     "unstorage": "^1.13.1"
   },
   "devDependencies": {
     "@kikiutils/changelogen": "^0.7.0",
-    "@kikiutils/eslint-config": "^0.4.1",
+    "@kikiutils/eslint-config": "^0.6.1",
     "@kikiutils/tsconfigs": "^3.0.2",
     "@types/lodash-es": "^4.17.12",
     "cookie-es": "^1.2.2",
