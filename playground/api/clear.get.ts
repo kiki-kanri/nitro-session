@@ -1,4 +1,4 @@
 export default defineEventHandler((event) => {
-	clearH3EventContextSession(event);
-	return 'success';
+    clearH3EventContextSession(event);
+    return 'success';
 });

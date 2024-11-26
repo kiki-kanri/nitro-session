@@ -59,9 +59,9 @@ export * from '@kikiutils/nitro-session/runtime/utils';
 
 ```typescript
 declare module '@kikiutils/nitro-session' {
-  interface H3EventContextSession {
-    // Define the session data here.
-  }
+    interface H3EventContextSession {
+        // Define the session data here.
+    }
 }
 
 export {};
@@ -75,11 +75,11 @@ Configure using `runtimeConfig` in `nitro.config.ts`.
 
 ```typescript
 export default defineNitroConfig({
-  runtimeConfig: {
-    nitroSession: {
-      // Configure options here
+    runtimeConfig: {
+        nitroSession: {
+            // Configure options here
+        }
     }
-  }
 });
 ```
 
@@ -124,19 +124,19 @@ Example configuration for using Redis as the data storage:
 
 ```typescript
 export default defineNitroConfig({
-  runtimeConfig: {
-    nitroSession: {
-      storage: {
-        data: {
-          driver: 'redis',
-          // Options for the corresponding driver
-          options: {
-            url: 'redis://127.0.0.1:6379'
-          }
+    runtimeConfig: {
+        nitroSession: {
+            storage: {
+                data: {
+                    driver: 'redis',
+                    // Options for the corresponding driver
+                    options: {
+                        url: 'redis://127.0.0.1:6379'
+                    }
+                }
+            }
         }
-      }
     }
-  }
 });
 ```
 
@@ -151,20 +151,20 @@ Example configuration for using header as the token transmission method:
 
 ```typescript
 export default defineNitroConfig({
-  runtimeConfig: {
-    nitroSession: {
-      storage: {
-        token: {
-          driver: 'header',
-          // Options for the corresponding method
-          options: {
-            name: 'session',
-            setName: 'set-session'
-          }
+    runtimeConfig: {
+        nitroSession: {
+            storage: {
+                token: {
+                    driver: 'header',
+                    // Options for the corresponding method
+                    options: {
+                        name: 'session',
+                        setName: 'set-session'
+                    }
+                }
+            }
         }
-      }
     }
-  }
 });
 ```
 
@@ -181,14 +181,14 @@ import axios from 'axios';
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request) => {
-  request.headers.session = window.sessionStorage.getItem('session');
-  return request;
+    request.headers.session = window.sessionStorage.getItem('session');
+    return request;
 });
 
 axiosInstance.interceptors.response.use((response) => {
-  const sessionToken = response.headers['set-session'];
-  if (sessionToken !== undefined) sessionToken ? window.sessionStorage.setItem('session', sessionToken) : window.sessionStorage.removeItem('session');
-  return response;
+    const sessionToken = response.headers['set-session'];
+    if (sessionToken !== undefined) sessionToken ? window.sessionStorage.setItem('session', sessionToken) : window.sessionStorage.removeItem('session');
+    return response;
 });
 ```
 
@@ -202,10 +202,10 @@ The [on-change](https://www.npmjs.com/package/on-change) package is used interna
 
 ```typescript
 export default defineEventHandler((event) => {
-  event.context.session.account = 'account';
-  event.context.session.username = 'name';
-  // Remaining operations...
-  return 'success';
+    event.context.session.account = 'account';
+    event.context.session.username = 'name';
+    // Remaining operations...
+    return 'success';
 });
 ```
 
@@ -213,8 +213,8 @@ export default defineEventHandler((event) => {
 
 ```typescript
 export default defineEventHandler((event) => {
-  const loginedUserId = event.context.session.userId;
-  // Remaining operations...
+    const loginedUserId = event.context.session.userId;
+    // Remaining operations...
 });
 ```
 
@@ -229,9 +229,7 @@ export default defineEventHandler((event) => {
 Due to a bug in one or more of the packages (h3/hookable/nitro), to ensure that the session can still be properly handled after an error occurs during API processing, you need to modify the `errorHandler` setting in the `nitro.config`:
 
 ```typescript
-export default defineNitroConfig({
-  errorHandler: './error-handler'
-});
+export default defineNitroConfig({ errorHandler: './error-handler' });
 ```
 
 Contents of `error-handler.ts` without using `send` function:
@@ -247,8 +245,8 @@ import { processResponseEvent } from '@kikiutils/nitro-session';
 import type { H3Error, H3Event } from 'h3';
 
 export default async (_: H3Error, event: H3Event) => {
-  await processResponseEvent(event);
-  send(event, 'internal server error'); // Or other error message
+    await processResponseEvent(event);
+    send(event, 'internal server error'); // Or other error message
 };
 ```
 

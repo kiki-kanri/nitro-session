@@ -54,9 +54,9 @@ export const getH3EventContextSessionToken = (event: H3Event) => event.context._
  * ```
  */
 export function clearH3EventContextSession(event: H3Event) {
-	onChange.unsubscribe(event.context.session);
-	event.context._nitroSessionChanged = event.context._nitroSessionCleared = true;
-	setupH3EventContextSession(event, {}, (event) => delete event.context._nitroSessionCleared);
+    onChange.unsubscribe(event.context.session);
+    event.context._nitroSessionChanged = event.context._nitroSessionCleared = true;
+    setupH3EventContextSession(event, {}, (event) => delete event.context._nitroSessionCleared);
 }
 
 /**
@@ -80,7 +80,7 @@ export function clearH3EventContextSession(event: H3Event) {
  * ```
  */
 export function popH3EventContextSession<K extends keyof PartialH3EventContextSession>(event: H3Event, key: K) {
-	const value = event.context.session[key];
-	delete event.context.session[key];
-	return value;
+    const value = event.context.session[key];
+    delete event.context.session[key];
+    return value;
 }
