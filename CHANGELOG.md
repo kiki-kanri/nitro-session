@@ -1,5 +1,21 @@
 # Changelog
 
+## v2.0.3
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v2.0.2...v2.0.3)
+
+### 🏡 Chore
+
+- Upgrade dependencies ([8b22c02](https://github.com/kiki-kanri/nitro-session/commit/8b22c02))
+
+### 🎨 Styles
+
+- Format and lint all files ([f7f3cb6](https://github.com/kiki-kanri/nitro-session/commit/f7f3cb6))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v2.0.2
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v2.0.1...v2.0.2)
