@@ -1,4 +1,7 @@
-import { getHeader, setHeader } from 'h3';
+import {
+    getHeader,
+    setHeader,
+} from 'h3';
 import type { H3Event } from 'h3';
 
 import type { TokenStorageOptions } from '../../types/options';

@@ -44,7 +44,11 @@ export class DataHandler {
     }
 
     async setAndGetToken(event: H3Event, data: PartialH3EventContextSession) {
-        const toSetData: StoredData = [Date.now(), data];
+        const toSetData: StoredData = [
+            Date.now(),
+            data,
+        ];
+
         if (this.#strictIpValidation) toSetData.push(this.#getRequestIP(event));
         return await this.#handler.setOrProcessAndGetToken(event, toSetData);
     }

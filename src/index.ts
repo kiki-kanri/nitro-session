@@ -1,8 +1,14 @@
 import consola from 'consola';
 import type { H3Event } from 'h3';
-import { cloneDeep, merge } from 'lodash-es';
+import {
+    cloneDeep,
+    merge,
+} from 'lodash-es';
 
-import { cachedHandlers, defaultOptions } from './constants';
+import {
+    cachedHandlers,
+    defaultOptions,
+} from './constants';
 import { DataHandler } from './handlers/data';
 import CookieTokenHandler from './handlers/token/cookie';
 import HeaderTokenHandler from './handlers/token/header';
@@ -24,7 +30,10 @@ async function createHandlers(options: Required<PluginOptions>) {
     if (options.storage?.token?.driver === 'cookie') tokenHandler = new CookieTokenHandler(options.storage.token.options, options.maxAge);
     else if (options.storage?.token?.driver === 'header') tokenHandler = new HeaderTokenHandler(options.storage?.token?.options);
     else throw new Error('Invalid token storage driver');
-    return { dataHandler, tokenHandler };
+    return {
+        dataHandler,
+        tokenHandler,
+    };
 }
 
 export async function initialization(framework: 'Nitro' | 'Nuxt', options?: PluginOptions) {
@@ -34,7 +43,10 @@ export async function initialization(framework: 'Nitro' | 'Nuxt', options?: Plug
     consola.info(`${framework} session configured data with '${pluginOptions.storage.data.driver}' driver.`);
     consola.info(`${framework} session configured token with '${pluginOptions.storage.token.driver}' driver.`);
     const handlers = await createHandlers(pluginOptions);
-    return { handlers, pluginOptions };
+    return {
+        handlers,
+        pluginOptions,
+    };
 }
 
 export async function registerHooksAndSetupCachedHandlers(nitroApp: NitroApp, options: Required<PluginOptions>, onlyApi?: boolean, handlers?: { dataHandler: DataHandler; tokenHandler: CookieTokenHandler | HeaderTokenHandler }) {

@@ -1,7 +1,10 @@
 import consola from 'consola';
 import type { H3Event } from 'h3';
 import { nanoid } from 'nanoid';
-import { createStorage, prefixStorage } from 'unstorage';
+import {
+    createStorage,
+    prefixStorage,
+} from 'unstorage';
 import type { Storage } from 'unstorage';
 
 import type { DataStorageOptions } from '../../types/options';

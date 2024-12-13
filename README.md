@@ -50,7 +50,12 @@ export * from '@kikiutils/nitro-session/runtime/utils';
 > If you encounter warning messages such as `[unimport] failed to resolve ..., skip scanning` during runtime, updating the unimport version to 3.9.0 or higher will resolve the issue. If updating is not possible, use the following code instead:
 >
 > ```typescript
-> export { clearH3EventContextSession, deleteH3EventContextSessionStorageData, getH3EventContextSessionToken, popH3EventContextSession } from '@kikiutils/nitro-session/runtime/utils';
+> export {
+>     clearH3EventContextSession,
+>     deleteH3EventContextSessionStorageData,
+>     getH3EventContextSessionToken,
+>     popH3EventContextSession
+> } from '@kikiutils/nitro-session/runtime/utils';
 > ```
 >
 > However, if you use this method, you will need to manually update the files whenever new utils are added. Using wildcard exports (`*`) will automatically export all utils, so it's recommended to use the latest version of unimport to support wildcard exports.
@@ -75,11 +80,8 @@ Configure using `runtimeConfig` in `nitro.config.ts`.
 
 ```typescript
 export default defineNitroConfig({
-    runtimeConfig: {
-        nitroSession: {
-            // Configure options here
-        }
-    }
+    // Configure options here
+    runtimeConfig: { nitroSession: {} }
 });
 ```
 
@@ -130,9 +132,7 @@ export default defineNitroConfig({
                 data: {
                     driver: 'redis',
                     // Options for the corresponding driver
-                    options: {
-                        url: 'redis://127.0.0.1:6379'
-                    }
+                    options: { url: 'redis://127.0.0.1:6379' }
                 }
             }
         }
@@ -242,7 +242,10 @@ Contents of `error-handler.ts` using `send` function:
 
 ```typescript
 import { processResponseEvent } from '@kikiutils/nitro-session';
-import type { H3Error, H3Event } from 'h3';
+import type {
+    H3Error,
+    H3Event
+} from 'h3';
 
 export default async (_: H3Error, event: H3Event) => {
     await processResponseEvent(event);
