@@ -22,13 +22,12 @@ export class CookieOrHeaderDataHandler {
 
         if (options?.encryptionMode && !aesModeToCipherClassMap[options.encryptionMode]) throw new Error(`Invalid cookie/header data encryption mode: ${options.encryptionMode}`);
         if (!options?.key) throw new Error('No cookie/header data encryption key provided');
-        // prettier-ignore
-        if (![
+        const isKeyLengthValid = [
             16,
             24,
             32,
-        ].includes(Buffer.from(options.key, options.encodingOptions?.key).byteLength)) throw new Error('Invalid cookie/header data encryption key length');
-
+        ].includes(Buffer.from(options.key, options.encodingOptions?.key).byteLength);
+        if (!isKeyLengthValid) throw new Error('Invalid cookie/header data encryption key length');
         this.#cipher = new aesModeToCipherClassMap[options.encryptionMode || 'ctr'](
             options.key,
             merge(
