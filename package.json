@@ -42,22 +42,22 @@
     "release": "pnpm run lint && pnpm run build && changelogen --push --release && sh ./build-and-publish.sh"
   },
   "dependencies": {
-    "consola": "^3.2.3",
+    "consola": "^3.3.3",
     "lodash-es": "^4.17.21",
     "nanoid": "^5.0.9",
-    "node-ciphers": "1.1.6",
+    "node-ciphers": "1.1.7",
     "on-change": "^5.0.1",
-    "unstorage": "^1.13.1"
+    "unstorage": "^1.14.4"
   },
   "devDependencies": {
     "@kikiutils/changelogen": "^0.7.0",
-    "@kikiutils/eslint-config": "^0.7.1",
+    "@kikiutils/eslint-config": "^0.7.3",
     "@kikiutils/tsconfigs": "^3.0.2",
     "@types/lodash-es": "^4.17.12",
     "cookie-es": "^1.2.2",
-    "h3": "npm:h3-nightly@1.13.1-20241208-012300-10e98be",
+    "h3": "npm:h3-nightly@1.13.1-20250105-014434-adddaab",
     "nitro": "npm:nitro-nightly@3.0.0-beta-28796231.359af68d",
-    "ts-project-builder": "3.3.3",
+    "ts-project-builder": "3.4.0",
     "tslib": "^2.8.1"
   }
 }
