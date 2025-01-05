@@ -33,7 +33,7 @@
     "node": ">=18.12.1"
   },
   "scripts": {
-    "build": "ts-project-builder ./src/index.ts ./src/runtime/utils.ts -f esm --clean --preserve-modules",
+    "build": "ts-project-builder ./src/index.ts ./src/runtime/utils.ts -f esm --clean --preserve-modules --sourcemaps",
     "build:playground": "nitro build",
     "bumplog": "changelogen --bump",
     "dev": "nitro dev",
