@@ -1,5 +1,26 @@
 # Changelog
 
+## v2.0.4
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v2.0.3...v2.0.4)
+
+### 📦 Build
+
+- Enable sourcemap output in build process ([42c5c9e](https://github.com/kiki-kanri/nitro-session/commit/42c5c9e))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([dfd5a55](https://github.com/kiki-kanri/nitro-session/commit/dfd5a55))
+- Modify pack file structure and update package.json.exports configuration ([db8d332](https://github.com/kiki-kanri/nitro-session/commit/db8d332))
+
+### 🎨 Styles
+
+- Format codes ([e7b3509](https://github.com/kiki-kanri/nitro-session/commit/e7b3509))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v2.0.3
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v2.0.2...v2.0.3)
