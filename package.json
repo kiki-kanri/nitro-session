@@ -18,17 +18,21 @@
   ],
   "exports": {
     ".": {
-      "types": "./index.d.ts",
-      "import": "./index.mjs"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
     },
     "./*": {
-      "types": "./*.d.ts",
-      "import": "./*.mjs"
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.mjs"
     },
     "./types/*": {
-      "types": "./types/*.d.ts"
+      "types": "./dist/types/*.d.ts"
     }
   },
+  "files": [
+    "./dist",
+    "./src"
+  ],
   "engines": {
     "node": ">=18.12.1"
   },
@@ -39,7 +43,7 @@
     "dev": "nitro dev",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
-    "release": "pnpm run lint && pnpm run build && changelogen --push --release && sh ./build-and-publish.sh"
+    "release": "pnpm run lint && pnpm run build && changelogen --push --release && npm publish"
   },
   "dependencies": {
     "consola": "^3.3.3",
