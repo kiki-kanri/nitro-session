@@ -1,5 +1,22 @@
 # Changelog
 
+## v2.0.5
+
+[compare changes](https://github.com/kiki-kanri/nitro-session/compare/v2.0.4...v2.0.5)
+
+### 💅 Refactors
+
+- Rename `#getRequestIP` to `#getRequestIp` ([50b9829](https://github.com/kiki-kanri/nitro-session/commit/50b9829))
+
+### 🏡 Chore
+
+- Upgrade dependencies and add `pnpm.onlyBuiltDependencies` setting to package.json ([61afa12](https://github.com/kiki-kanri/nitro-session/commit/61afa12))
+- Update code due to dependency updates ([c7eb42e](https://github.com/kiki-kanri/nitro-session/commit/c7eb42e))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v2.0.4
 
 [compare changes](https://github.com/kiki-kanri/nitro-session/compare/v2.0.3...v2.0.4)
