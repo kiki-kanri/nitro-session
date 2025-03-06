@@ -20,7 +20,7 @@ export class DataHandler {
         this.#strictIpValidation = strictIpValidation;
     }
 
-    #getRequestIP(event: H3Event) {
+    #getRequestIp(event: H3Event) {
         return getRequestIP(event, { xForwardedFor: true }) || getRequestIP(event);
     }
 
@@ -38,7 +38,7 @@ export class DataHandler {
     async get(event: H3Event, token: string) {
         const data = await this.#handler.get(event, token);
         if (data && data[0] + this.#maxAgeMilliseconds >= Date.now()) {
-            if (this.#strictIpValidation && this.#getRequestIP(event) !== data[2]) return;
+            if (this.#strictIpValidation && this.#getRequestIp(event) !== data[2]) return;
             return data[1];
         }
     }
@@ -49,7 +49,7 @@ export class DataHandler {
             data,
         ];
 
-        if (this.#strictIpValidation) toSetData.push(this.#getRequestIP(event));
+        if (this.#strictIpValidation) toSetData.push(this.#getRequestIp(event));
         return await this.#handler.setOrProcessAndGetToken(event, toSetData);
     }
 }
