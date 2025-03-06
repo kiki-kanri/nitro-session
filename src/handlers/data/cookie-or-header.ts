@@ -1,6 +1,6 @@
 import type { H3Event } from 'h3';
 import { merge } from 'lodash-es';
-import { AESCipher } from 'node-ciphers';
+import { AesCipher } from 'node-ciphers';
 import { Buffer } from 'node:buffer';
 
 import type { DataStorageOptions } from '../../types/options';
@@ -8,16 +8,16 @@ import type { DataStorageOptions } from '../../types/options';
 import type { StoredData } from './';
 
 export class CookieOrHeaderDataHandler {
-    #cipher: AESCipher.CBC | AESCipher.CFB | AESCipher.CFB1 | AESCipher.CFB8 | AESCipher.CTR | AESCipher.OFB;
+    #cipher: AesCipher.Cbc | AesCipher.Cfb | AesCipher.Cfb1 | AesCipher.Cfb8 | AesCipher.Ctr | AesCipher.Ofb;
 
     constructor(options?: DataStorageOptions.CookieOrHeader['options']) {
         const aesModeToCipherClassMap = {
-            cbc: AESCipher.CBC,
-            cfb: AESCipher.CFB,
-            cfb1: AESCipher.CFB1,
-            cfb8: AESCipher.CFB8,
-            ctr: AESCipher.CTR,
-            ofb: AESCipher.OFB,
+            cbc: AesCipher.Cbc,
+            cfb: AesCipher.Cfb,
+            cfb1: AesCipher.Cfb1,
+            cfb8: AesCipher.Cfb8,
+            ctr: AesCipher.Ctr,
+            ofb: AesCipher.Ofb,
         } as const;
 
         if (options?.encryptionMode && !aesModeToCipherClassMap[options.encryptionMode]) throw new Error(`Invalid cookie/header data encryption mode: ${options.encryptionMode}`);
@@ -45,11 +45,11 @@ export class CookieOrHeaderDataHandler {
 
     get(_: H3Event, token: string) {
         const separatorIndex = token.lastIndexOf(':');
-        if (separatorIndex !== -1) return this.#cipher.decryptToJSON<StoredData>(token.slice(0, separatorIndex), token.slice(separatorIndex + 1));
+        if (separatorIndex !== -1) return this.#cipher.decryptToJson<StoredData>(token.slice(0, separatorIndex), token.slice(separatorIndex + 1));
     }
 
     setOrProcessAndGetToken(_: H3Event, data: StoredData) {
-        const encryptResult = this.#cipher.encryptJSON(data);
+        const encryptResult = this.#cipher.encryptJson(data);
         if (encryptResult) return `${encryptResult.data}:${encryptResult.iv}`;
     }
 }

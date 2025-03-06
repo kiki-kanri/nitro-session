@@ -1,5 +1,5 @@
 import type { CookieSerializeOptions } from 'cookie-es';
-import type { AESCipherEncodingOptions } from 'node-ciphers';
+import type { AesCipherEncodingOptions } from 'node-ciphers';
 import type { AzureAppConfigurationOptions } from 'unstorage/drivers/azure-app-configuration';
 import type { AzureCosmosOptions } from 'unstorage/drivers/azure-cosmos';
 import type { AzureKeyVaultOptions } from 'unstorage/drivers/azure-key-vault';
@@ -179,7 +179,7 @@ export namespace DataStorageOptions {
              *   iv: 'base64'
              * }
              */
-            encodingOptions?: AESCipherEncodingOptions;
+            encodingOptions?: AesCipherEncodingOptions;
             encryptionMode?: 'cbc' | 'cfb1' | 'cfb8' | 'cfb' | 'ctr' | 'ofb';
 
             /**
